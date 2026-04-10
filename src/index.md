@@ -522,7 +522,7 @@ function renderQuotaWaffleChunk(rows, { width = 1000 } = {}) {
   const chart = Plot.plot({
     style: {
       fontFamily: "IBM Plex Sans",
-      fontSize: 14,
+      fontSize: 12,
       padding: "5px"
     },
     color: {
