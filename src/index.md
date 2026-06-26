@@ -12,6 +12,7 @@ import * as Plot from "npm:@observablehq/plot";
 import { constituencyMap } from "./components/constituency-map.js";
 import { electionTimelineControls } from "./components/election-timeline-controls.js";
 import { electionBarRace } from "./components/electionBarRace.js";
+import { renderElectionSectionNav } from "./components/election-section-nav.js";
 
 async function ensureLeafletCss() {
   if (typeof document === "undefined") return;
@@ -822,6 +823,18 @@ display(
         </div>
       </div>
     `;
+  })
+);
+```
+
+```js
+display(
+  renderElectionSectionNav({
+    currentSection: "dail",
+    hrefs: {
+      dail: "./",
+      seanad: "./seanad/"
+    }
   })
 );
 ```

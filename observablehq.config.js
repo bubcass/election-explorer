@@ -1,5 +1,5 @@
 export default {
-  title: "Elections Explorer",
+  title: "Election Explorer | Houses of the Oireachtas",
   head: `
     <link rel="icon" href="logo.png" type="image/png" sizes="32x32">
     <script>
