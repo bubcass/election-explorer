@@ -244,15 +244,25 @@ a:focus-visible {
     line-height: 1.65;
 }
 
-.prose-block a {
+.prose-block a[href^="http"] {
+    color: var(--text-soft);
+    text-decoration: none;
+    transition: color 0.25s ease;
+}
+
+.prose-block a[href^="http"]:hover,
+.prose-block a[href^="http"]:focus-visible {
+    color: var(--link-hover);
     text-decoration: underline;
-    text-underline-offset: 0.14em;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
 }
 
 .prose-block a[href^="http"]::after {
     content: " ↗";
     font-size: 0.85em;
     color: var(--text-muted);
+    transition: color 0.25s ease;
 }
 
 .prose-block a[href^="http"]:hover::after,
