@@ -848,6 +848,8 @@ display(
 
 <div class="prose-block">
 
+<p>Election Explorer is part of our <a href="https://bubcass.github.io/open-data-insights/">Open Data Insights series</a>.</p>
+
 The 2025 Seanad election returned Senators across the vocational panels. Take a look at how the election unfolded by panel, count and candidate.
 
 </div>

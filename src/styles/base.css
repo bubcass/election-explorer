@@ -224,9 +224,16 @@ a:focus-visible {
 .prose-block {
     max-width: var(--text-max);
     margin: 0.65rem auto 0.45rem;
+    display: grid;
+    gap: var(--space-2);
+    line-height: 1.65;
 }
 
-.prose-block p:last-child {
+.prose-block > * {
+    margin: 0;
+}
+
+.prose-block > :last-child {
     margin-bottom: 0;
 }
 
@@ -235,6 +242,22 @@ a:focus-visible {
     color: var(--text-soft);
     font-size: 1.05rem;
     line-height: 1.65;
+}
+
+.prose-block a {
+    text-decoration: underline;
+    text-underline-offset: 0.14em;
+}
+
+.prose-block a[href^="http"]::after {
+    content: " ↗";
+    font-size: 0.85em;
+    color: var(--text-muted);
+}
+
+.prose-block a[href^="http"]:hover::after,
+.prose-block a[href^="http"]:focus-visible::after {
+    color: var(--link-hover);
 }
 
 .reactive-prose {

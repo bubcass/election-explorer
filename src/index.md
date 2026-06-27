@@ -841,7 +841,8 @@ display(
 
 <div class="prose-block">
 
-The latest election of TDs took place in November 2024 and 174 Members were returned from 43 constituencies. Take a look at how it unfolded by constituency,  count and candidate.
+<p>Election Explorer is part of our <a href="https://bubcass.github.io/open-data-insights/">Open Data Insights series</a>.</p>
+<p>The latest election of TDs took place in November 2024 and 174 Members were returned from 43 constituencies. Take a look at how it unfolded by constituency,  count and candidate.</p>
 
 </div>
 
