@@ -1439,11 +1439,11 @@ display(
           .map(
             (d) => `
               <tr>
-                <td>${d.displayName}</td>
-                <td>${d.party ?? ""}</td>
-                <td>${format(d.votes ?? 0)}</td>
-                <td>${format(d.transfer ?? 0)}</td>
-                <td>${d.status ?? ""}</td>
+                <td data-label="Candidate">${d.displayName}</td>
+                <td data-label="Party">${d.party ?? ""}</td>
+                <td data-label="Votes">${format(d.votes ?? 0)}</td>
+                <td data-label="Transfer">${format(d.transfer ?? 0)}</td>
+                <td data-label="Status">${d.status ?? ""}</td>
               </tr>
             `
           )
@@ -1679,10 +1679,10 @@ display(
           .map(
             (d) => `
               <tr>
-                <td>${d.count ?? ""}</td>
-                <td>${format(d.transfer ?? 0)}</td>
-                <td>${format(d.votes ?? 0)}</td>
-                <td>${d.status ?? ""}</td>
+                <td data-label="After count No.">${d.count ?? ""}</td>
+                <td data-label="Transfer">${format(d.transfer ?? 0)}</td>
+                <td data-label="Votes">${format(d.votes ?? 0)}</td>
+                <td data-label="Status">${d.status ?? ""}</td>
               </tr>
             `
           )
