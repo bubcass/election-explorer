@@ -7,10 +7,10 @@
 <title>Dáil Éireann | Election Explorer | Houses of the Oireachtas</title>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&amp;display=swap" crossorigin>
-<link rel="preload" as="style" href="./_import/style.d8447c00.css">
+<link rel="preload" as="style" href="./_import/style.b0a6a992.css">
 <link rel="preload" as="style" href="./_npm/leaflet@1.9.4/dist/leaflet.css">
 <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&amp;display=swap" crossorigin>
-<link rel="stylesheet" type="text/css" href="./_import/style.d8447c00.css">
+<link rel="stylesheet" type="text/css" href="./_import/style.b0a6a992.css">
 <link rel="stylesheet" type="text/css" href="./_npm/leaflet@1.9.4/dist/leaflet.css">
 <link rel="modulepreload" href="./_observablehq/client.5cea8408.js">
 <link rel="modulepreload" href="./_observablehq/runtime.607a8173.js">
@@ -1411,7 +1411,7 @@ display(
 );
 }});
 
-define({id: "0479ee45", inputs: ["display","mountReactive","chartPlaceholder","getCountRows","getDisplayNameFromElection","clean","getState","d3","format"], body: (display,mountReactive,chartPlaceholder,getCountRows,getDisplayNameFromElection,clean,getState,d3,format) => {
+define({id: "7ad76a3b", inputs: ["display","mountReactive","chartPlaceholder","getCountRows","getDisplayNameFromElection","clean","getState","d3","format"], body: (display,mountReactive,chartPlaceholder,getCountRows,getDisplayNameFromElection,clean,getState,d3,format) => {
 display(
   mountReactive("", async (el, { skeletonOnly, isCurrent }) => {
     if (skeletonOnly) {
@@ -1475,11 +1475,11 @@ display(
           .map(
             (d) => `
               <tr>
-                <td>${d.displayName}</td>
-                <td>${d.party ?? ""}</td>
-                <td>${format(d.votes ?? 0)}</td>
-                <td>${format(d.transfer ?? 0)}</td>
-                <td>${d.status ?? ""}</td>
+                <td data-label="Candidate">${d.displayName}</td>
+                <td data-label="Party">${d.party ?? ""}</td>
+                <td data-label="Votes">${format(d.votes ?? 0)}</td>
+                <td data-label="Transfer">${format(d.transfer ?? 0)}</td>
+                <td data-label="Status">${d.status ?? ""}</td>
               </tr>
             `
           )
@@ -1670,7 +1670,7 @@ display(
 );
 }});
 
-define({id: "4b1d28d2", inputs: ["display","mountReactive","chartPlaceholder","getCandidateRecord","format"], body: (display,mountReactive,chartPlaceholder,getCandidateRecord,format) => {
+define({id: "65bae34b", inputs: ["display","mountReactive","chartPlaceholder","getCandidateRecord","format"], body: (display,mountReactive,chartPlaceholder,getCandidateRecord,format) => {
 display(
   mountReactive("", async (el, { skeletonOnly, isCurrent }) => {
     if (skeletonOnly) {
@@ -1707,10 +1707,10 @@ display(
           .map(
             (d) => `
               <tr>
-                <td>${d.count ?? ""}</td>
-                <td>${format(d.transfer ?? 0)}</td>
-                <td>${format(d.votes ?? 0)}</td>
-                <td>${d.status ?? ""}</td>
+                <td data-label="After count No.">${d.count ?? ""}</td>
+                <td data-label="Transfer">${format(d.transfer ?? 0)}</td>
+                <td data-label="Votes">${format(d.votes ?? 0)}</td>
+                <td data-label="Status">${d.status ?? ""}</td>
               </tr>
             `
           )
@@ -1822,7 +1822,7 @@ display(
 </div>
 <div class="observablehq observablehq--block"><!--:f5bdf176:--></div>
 <div class="chart-block">
-<div class="observablehq observablehq--block"><!--:0479ee45:--></div>
+<div class="observablehq observablehq--block"><!--:7ad76a3b:--></div>
 </div>
 <div class="observablehq observablehq--block"><!--:377df0e3:--></div>
 <div class="observablehq observablehq--block"><!--:a329ded5:--></div>
@@ -1830,7 +1830,7 @@ display(
 <div class="observablehq observablehq--block"><!--:d1331e66:--></div>
 </div>
 <div class="chart-block">
-<div class="observablehq observablehq--block"><!--:4b1d28d2:--></div>
+<div class="observablehq observablehq--block"><!--:65bae34b:--></div>
 </div>
 <div class="observablehq observablehq--block"><!--:425079cc:--></div>
 </main>

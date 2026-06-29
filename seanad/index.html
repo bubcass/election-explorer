@@ -7,9 +7,9 @@
 <title>Seanad Éireann | Election Explorer | Houses of the Oireachtas</title>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&amp;display=swap" crossorigin>
-<link rel="preload" as="style" href="../_import/style.d8447c00.css">
+<link rel="preload" as="style" href="../_import/style.b0a6a992.css">
 <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&amp;display=swap" crossorigin>
-<link rel="stylesheet" type="text/css" href="../_import/style.d8447c00.css">
+<link rel="stylesheet" type="text/css" href="../_import/style.b0a6a992.css">
 <link rel="modulepreload" href="../_observablehq/client.5cea8408.js">
 <link rel="modulepreload" href="../_observablehq/runtime.607a8173.js">
 <link rel="modulepreload" href="../_observablehq/stdlib.277aeab8.js">
@@ -1297,7 +1297,7 @@ display(
 );
 }});
 
-define({id: "058da544", inputs: ["display","mountReactive","chartPlaceholder","getCountRows","clean","getState","d3","format"], body: (display,mountReactive,chartPlaceholder,getCountRows,clean,getState,d3,format) => {
+define({id: "9182a7e4", inputs: ["display","mountReactive","chartPlaceholder","getCountRows","clean","getState","d3","format"], body: (display,mountReactive,chartPlaceholder,getCountRows,clean,getState,d3,format) => {
 display(
   mountReactive("", async (el, { skeletonOnly, isCurrent }) => {
     if (skeletonOnly) {
@@ -1361,11 +1361,11 @@ display(
       <tbody>
         ${sortedRows.map((d) => `
           <tr>
-            <td>${d.displayName}</td>
-            <td>${d.subPanel ?? ""}</td>
-            <td>${format(d.votes ?? 0)}</td>
-            <td>${format(d.transfer ?? 0)}</td>
-            <td>${d.status ?? ""}</td>
+            <td data-label="Candidate">${d.displayName}</td>
+            <td data-label="Sub-panel">${d.subPanel ?? ""}</td>
+            <td data-label="Votes">${format(d.votes ?? 0)}</td>
+            <td data-label="Transfer">${format(d.transfer ?? 0)}</td>
+            <td data-label="Status">${d.status ?? ""}</td>
           </tr>
         `).join("")}
       </tbody>
@@ -1574,7 +1574,7 @@ display(
 
 }});
 
-define({id: "eae130f0", inputs: ["display","mountReactive","chartPlaceholder","getCandidateRecord","format","getResults","getState","clean","d3"], body: (display,mountReactive,chartPlaceholder,getCandidateRecord,format,getResults,getState,clean,d3) => {
+define({id: "197bb677", inputs: ["display","mountReactive","chartPlaceholder","getCandidateRecord","format","getResults","getState","clean","d3"], body: (display,mountReactive,chartPlaceholder,getCandidateRecord,format,getResults,getState,clean,d3) => {
 display(
   mountReactive("", async (el, { skeletonOnly, isCurrent }) => {
     if (skeletonOnly) {
@@ -1611,10 +1611,10 @@ display(
           .map(
             (d) => `
               <tr>
-                <td>${d.count ?? ""}</td>
-                <td>${format(d.transfer ?? 0)}</td>
-                <td>${format(d.votes ?? 0)}</td>
-                <td>${d.status ?? ""}</td>
+                <td data-label="After count No.">${d.count ?? ""}</td>
+                <td data-label="Transfer">${format(d.transfer ?? 0)}</td>
+                <td data-label="Votes">${format(d.votes ?? 0)}</td>
+                <td data-label="Status">${d.status ?? ""}</td>
               </tr>
             `
           )
@@ -1740,14 +1740,14 @@ display(
   </div>
 </div>
 <div class="chart-block">
-<div class="observablehq observablehq--block"><!--:058da544:--></div>
+<div class="observablehq observablehq--block"><!--:9182a7e4:--></div>
 </div>
 <div class="observablehq observablehq--block"><!--:139298ff:--></div>
 <div class="observablehq observablehq--block"><!--:2bcadd6a:--></div>
 <div class="chart-block chart-block--wide">
 <div class="observablehq observablehq--block"><!--:da778b29:--></div>
 <div class="chart-block">
-<div class="observablehq observablehq--block"><!--:eae130f0:--></div>
+<div class="observablehq observablehq--block"><!--:197bb677:--></div>
 </div></div></main>
 </div>
 </body>
