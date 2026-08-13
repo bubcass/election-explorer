@@ -207,9 +207,17 @@ export function electionBarRace({
 
   let bar = svg.append("g").selectAll("rect");
 
+  const visibleCandidates = (ranked) =>
+    ranked
+      .filter(
+        (candidate) =>
+          candidate.value > 0 || (prev.get(candidate)?.value ?? 0) > 0,
+      )
+      .slice(0, n);
+
   function updateBars([count, ranked], transition) {
     bar = bar
-      .data(ranked.slice(0, n), (d) => d.name)
+      .data(visibleCandidates(ranked), (d) => d.name)
       .join(
         (enter) =>
           enter
@@ -232,12 +240,15 @@ export function electionBarRace({
             .attr("y", (d) => y((prev.get(d) || d).rank))
             .attr("width", (d) => x((prev.get(d) || d).value) - x(0)),
         (update) => update,
-        (exit) =>
-          exit
+        (exit) => {
+          exit.filter((d) => (next.get(d)?.value ?? 0) <= 0).remove();
+          return exit
+            .filter((d) => (next.get(d)?.value ?? 0) > 0)
             .transition(transition)
             .remove()
             .attr("y", (d) => y((next.get(d) || d).rank))
-            .attr("width", (d) => x((next.get(d) || d).value) - x(0)),
+            .attr("width", (d) => x((next.get(d) || d).value) - x(0));
+        },
       );
 
     bar
@@ -267,7 +278,7 @@ export function electionBarRace({
 
   function updateLabels([, ranked], transition) {
     label = label
-      .data(ranked.slice(0, n), (d) => d.name)
+      .data(visibleCandidates(ranked), (d) => d.name)
       .join(
         (enter) =>
           enter
@@ -281,6 +292,7 @@ export function electionBarRace({
             .attr("x", -8)
             .attr("dy", "-0.22em")
             .attr("fill", "white")
+            .attr("opacity", (d) => (d.value > 0 ? 1 : 0))
             .text((d) => d.name)
             .call((text) =>
               text
@@ -291,8 +303,10 @@ export function electionBarRace({
                 .attr("font-weight", "400"),
             ),
         (update) => update,
-        (exit) =>
-          exit
+        (exit) => {
+          exit.filter((d) => (next.get(d)?.value ?? 0) <= 0).remove();
+          return exit
+            .filter((d) => (next.get(d)?.value ?? 0) > 0)
             .transition(transition)
             .remove()
             .attr(
@@ -306,12 +320,14 @@ export function electionBarRace({
                 .tween("text", (d) =>
                   textTween(d.value, (next.get(d) || d).value),
                 ),
-            ),
+            );
+        },
       );
 
     label
       .transition(transition)
       .attr("transform", (d) => `translate(${x(d.value)},${y(d.rank)})`)
+      .attr("opacity", (d) => (d.value > 0 ? 1 : 0))
       .call((group) =>
         group
           .select("tspan")

@@ -7,10 +7,10 @@
 <title>Dáil Éireann | Election Explorer | Houses of the Oireachtas</title>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&amp;display=swap" crossorigin>
-<link rel="preload" as="style" href="./_import/style.a9037b2d.css">
+<link rel="preload" as="style" href="./_import/style.891e3ddc.css">
 <link rel="preload" as="style" href="./_npm/leaflet@1.9.4/dist/leaflet.css">
 <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&amp;display=swap" crossorigin>
-<link rel="stylesheet" type="text/css" href="./_import/style.a9037b2d.css">
+<link rel="stylesheet" type="text/css" href="./_import/style.891e3ddc.css">
 <link rel="stylesheet" type="text/css" href="./_npm/leaflet@1.9.4/dist/leaflet.css">
 <link rel="modulepreload" href="./_observablehq/client.5cea8408.js">
 <link rel="modulepreload" href="./_observablehq/runtime.607a8173.js">
@@ -19,9 +19,10 @@
 <link rel="modulepreload" href="./_npm/@observablehq/plot@0.6.17/a96a6bbb.js">
 <link rel="modulepreload" href="./_import/components/constituency-map.c6a7a042.js">
 <link rel="modulepreload" href="./_import/components/election-timeline-controls.2bc1e103.js">
-<link rel="modulepreload" href="./_import/components/electionBarRace.58417376.js">
+<link rel="modulepreload" href="./_import/components/electionBarRace.ad1ae1dd.js">
 <link rel="modulepreload" href="./_import/components/election-section-nav.263b35f7.js">
 <link rel="modulepreload" href="./_import/components/hero-share.0f8d6dd4.js">
+<link rel="modulepreload" href="./_import/components/constituency-location.b4402e47.js">
 <link rel="modulepreload" href="./_npm/leaflet@1.9.4/721623d8.js">
 <link rel="modulepreload" href="./_npm/d3-array@3.2.4/e93ca09f.js">
 <link rel="modulepreload" href="./_npm/d3-axis@3.0.0/0f2de24d.js">
@@ -218,8 +219,8 @@ registerFile("./data/geo/constituencies.json", {"name":"./data/geo/constituencie
 registerFile("./data/members-lookup.json", {"name":"./data/members-lookup.json","mimeType":"application/json","path":"./_file/data/members-lookup.5a575ad4.json","lastModified":1775303425959,"size":121021});
 registerFile("./media/election.mp4", {"name":"./media/election.mp4","mimeType":"video/mp4","path":"./_file/media/election.c68f2e1b.mp4","lastModified":1775503093166,"size":2601178});
 
-define({id: "a227e312", inputs: ["FileAttachment","ResizeObserver","parent","getComputedStyle","SVGElement"], outputs: ["d3","Plot","constituencyMap","electionTimelineControls","electionBarRace","renderElectionSectionNav","enhanceHeroWithShare","ensureLeafletCss","format","heroVideoPromise","normalisedPromise","finalRowsPromise","barRacePromise","constituenciesGeoPromise","membersLookupPromise","downloadHrefPromise","partyColorMap","getState","themeColour","chartPlaceholder","mountReactive","clean","cleanConstituencyName","canonicalPersonName","getDisplayNameFromElection","fixPlotAria","getColorChoices","renderColorLegend","renderStatusLegend","getResults","getFinalRows","getBarRaceConstituency","getConstituenciesGeo","getMembersLookup","getMembersArray","getFilteredConstituencyGeo","getAvailableConstituencies","getConstituencySummary","getMatchedElectedMembers","getCountRows","getActiveCountLabel","getWaffleRows","splitIntoTwoRows","renderQuotaWaffleChunk","renderConstituencySelect","renderSegmentedControl","getCandidateOptions","ensureValidCandidateFocus","getCandidateRecord","getCandidateNarrative"], body: async (FileAttachment,ResizeObserver,parent,getComputedStyle,SVGElement) => {
-const [d3, Plot, {constituencyMap}, {electionTimelineControls}, {electionBarRace}, {renderElectionSectionNav}, {enhanceHeroWithShare}] = await Promise.all([import("./_npm/d3@7.9.0/66d82917.js"), import("./_npm/@observablehq/plot@0.6.17/a96a6bbb.js"), import("./_import/components/constituency-map.c6a7a042.js"), import("./_import/components/election-timeline-controls.2bc1e103.js"), import("./_import/components/electionBarRace.58417376.js"), import("./_import/components/election-section-nav.263b35f7.js"), import("./_import/components/hero-share.0f8d6dd4.js")]);
+define({id: "b7eae235", inputs: ["FileAttachment","ResizeObserver","parent","getComputedStyle","SVGElement"], outputs: ["d3","Plot","constituencyMap","electionTimelineControls","electionBarRace","renderElectionSectionNav","enhanceHeroWithShare","detectConstituencyFromLocation","ensureLeafletCss","format","heroVideoPromise","normalisedPromise","finalRowsPromise","barRacePromise","constituenciesGeoPromise","membersLookupPromise","downloadHrefPromise","partyColorMap","getState","themeColour","chartPlaceholder","mountReactive","clean","cleanConstituencyName","canonicalPersonName","getDisplayNameFromElection","fixPlotAria","getColorChoices","renderColorLegend","renderStatusLegend","getResults","getFinalRows","getBarRaceConstituency","getConstituenciesGeo","getMembersLookup","getMembersArray","getFilteredConstituencyGeo","getAvailableConstituencies","getConstituencySummary","getMatchedElectedMembers","getCountRows","getActiveCountLabel","getWaffleRows","splitIntoTwoRows","renderQuotaWaffleChunk","renderConstituencySelect","renderSegmentedControl","getCandidateOptions","ensureValidCandidateFocus","getCandidateRecord","getCandidateNarrative"], body: async (FileAttachment,ResizeObserver,parent,getComputedStyle,SVGElement) => {
+const [d3, Plot, {constituencyMap}, {electionTimelineControls}, {electionBarRace}, {renderElectionSectionNav}, {enhanceHeroWithShare}, {detectConstituencyFromLocation}] = await Promise.all([import("./_npm/d3@7.9.0/66d82917.js"), import("./_npm/@observablehq/plot@0.6.17/a96a6bbb.js"), import("./_import/components/constituency-map.c6a7a042.js"), import("./_import/components/election-timeline-controls.2bc1e103.js"), import("./_import/components/electionBarRace.ad1ae1dd.js"), import("./_import/components/election-section-nav.263b35f7.js"), import("./_import/components/hero-share.0f8d6dd4.js"), import("./_import/components/constituency-location.b4402e47.js")]);
 
 async function ensureLeafletCss() {
   if (typeof document === "undefined") return;
@@ -858,9 +859,12 @@ function renderConstituencySelect(options, selectedValue) {
   wrap.className = "election-constituency-select";
 
   wrap.innerHTML = `
-    <label class="control control--constituency">
-      <span class="control-label">Select a constituency</span>
-      <select class="control-input">
+    <div class="control control--constituency">
+      <div class="constituency-control-heading">
+        <label for="election-constituency-select" class="control-label">Select a constituency</label>
+        <button type="button" class="constituency-location-action">Use my location</button>
+      </div>
+      <select id="election-constituency-select" class="control-input">
         ${options
           .map(
             (value) => `
@@ -871,16 +875,49 @@ function renderConstituencySelect(options, selectedValue) {
           )
           .join("")}
       </select>
-    </label>
+      <span class="constituency-location-status" aria-live="polite"></span>
+    </div>
   `;
 
   const select = wrap.querySelector("select");
+  const locateButton = wrap.querySelector(".constituency-location-action");
+  const locateStatus = wrap.querySelector(".constituency-location-status");
 
-  select?.addEventListener("change", () => {
-    window.electionsState.constituency = select.value;
+  function selectConstituency(constituency) {
+    window.electionsState.constituency = constituency;
     window.electionsState.count = null;
     window.electionsState.candidateFocus = null;
     window.dispatchEvent(new CustomEvent("elections:change"));
+  }
+
+  select?.addEventListener("change", () => {
+    locateStatus.textContent = "";
+    selectConstituency(select.value);
+  });
+
+  locateButton?.addEventListener("click", async () => {
+    locateButton.disabled = true;
+    locateButton.textContent = "Finding constituency…";
+    locateStatus.textContent = "";
+
+    try {
+      const result = await detectConstituencyFromLocation({
+        constituencyGeoJSON: await getConstituenciesGeo(),
+        availableConstituencies: options,
+      });
+
+      if (result.ok && options.includes(result.constituency)) {
+        select.value = result.constituency;
+        selectConstituency(result.constituency);
+      } else {
+        locateStatus.textContent = "Location unavailable — choose from the list.";
+      }
+    } catch {
+      locateStatus.textContent = "Location unavailable — choose from the list.";
+    } finally {
+      locateButton.disabled = false;
+      locateButton.textContent = "Use my location";
+    }
   });
 
   return wrap;
@@ -1000,7 +1037,7 @@ async function getCandidateNarrative() {
   const peakVotes = d3.max(candidateRecord, (d) => d.votes) ?? 0;
   return `<strong>${candidate.displayName}</strong> ran as a <strong>${candidate.party ?? "Independent"}</strong> candidate and <strong>did not exceed the quota</strong>, reaching a peak of ${format(peakVotes)} votes.`;
 }
-return {d3,Plot,constituencyMap,electionTimelineControls,electionBarRace,renderElectionSectionNav,enhanceHeroWithShare,ensureLeafletCss,format,heroVideoPromise,normalisedPromise,finalRowsPromise,barRacePromise,constituenciesGeoPromise,membersLookupPromise,downloadHrefPromise,partyColorMap,getState,themeColour,chartPlaceholder,mountReactive,clean,cleanConstituencyName,canonicalPersonName,getDisplayNameFromElection,fixPlotAria,getColorChoices,renderColorLegend,renderStatusLegend,getResults,getFinalRows,getBarRaceConstituency,getConstituenciesGeo,getMembersLookup,getMembersArray,getFilteredConstituencyGeo,getAvailableConstituencies,getConstituencySummary,getMatchedElectedMembers,getCountRows,getActiveCountLabel,getWaffleRows,splitIntoTwoRows,renderQuotaWaffleChunk,renderConstituencySelect,renderSegmentedControl,getCandidateOptions,ensureValidCandidateFocus,getCandidateRecord,getCandidateNarrative};
+return {d3,Plot,constituencyMap,electionTimelineControls,electionBarRace,renderElectionSectionNav,enhanceHeroWithShare,detectConstituencyFromLocation,ensureLeafletCss,format,heroVideoPromise,normalisedPromise,finalRowsPromise,barRacePromise,constituenciesGeoPromise,membersLookupPromise,downloadHrefPromise,partyColorMap,getState,themeColour,chartPlaceholder,mountReactive,clean,cleanConstituencyName,canonicalPersonName,getDisplayNameFromElection,fixPlotAria,getColorChoices,renderColorLegend,renderStatusLegend,getResults,getFinalRows,getBarRaceConstituency,getConstituenciesGeo,getMembersLookup,getMembersArray,getFilteredConstituencyGeo,getAvailableConstituencies,getConstituencySummary,getMatchedElectedMembers,getCountRows,getActiveCountLabel,getWaffleRows,splitIntoTwoRows,renderQuotaWaffleChunk,renderConstituencySelect,renderSegmentedControl,getCandidateOptions,ensureValidCandidateFocus,getCandidateRecord,getCandidateNarrative};
 }});
 
 define({id: "c56313d9", inputs: ["display","renderElectionSectionNav"], body: (display,renderElectionSectionNav) => {
@@ -1922,7 +1959,7 @@ display(
 <body>
 <div id="observablehq-center">
 <main id="observablehq-main" class="observablehq">
-<div class="observablehq observablehq--block"><!--:a227e312:--></div>
+<div class="observablehq observablehq--block"><!--:b7eae235:--></div>
 <div class="observablehq observablehq--block"><!--:c56313d9:--></div>
 <div class="observablehq observablehq--block"><!--:643db940:--></div>
 <div class="prose-block">
