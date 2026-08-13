@@ -322,9 +322,9 @@
     }
 
     :root:not([data-theme="dark"]) .oireachtas-masthead__logo { filter: brightness(0) saturate(100%) invert(25%) sepia(7%) saturate(523%) hue-rotate(3deg) brightness(94%) contrast(91%); }
-    .oireachtas-masthead__inner { grid-template-columns: auto minmax(0, 1fr) auto; gap: 0.75rem; padding-inline: 12px; }
+    .oireachtas-masthead__inner { position: relative; grid-template-columns: auto minmax(0, 1fr) auto; gap: 0.75rem; padding-inline: 12px; }
     .oireachtas-masthead__logo { width: 98px; }
-    .oireachtas-masthead__resource { min-width: 0; overflow: hidden; color: var(--text); font-size: 0.76rem; line-height: 1.2; text-align: center; text-overflow: ellipsis; white-space: normal; }
+    .oireachtas-masthead__resource { position: absolute; top: 50%; left: 50%; min-width: 0; max-width: 9rem; overflow: hidden; color: var(--text); font-size: 0.76rem; line-height: 1.2; text-align: center; text-overflow: ellipsis; white-space: normal; transform: translate(-50%, -50%); }
     .oireachtas-masthead__resource:hover,
     .oireachtas-masthead__resource:focus-visible { color: var(--text); }
     .oireachtas-masthead__actions { gap: 0.35rem; }
