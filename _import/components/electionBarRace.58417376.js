@@ -1,8 +1,19 @@
 import * as d3 from "../../_npm/d3@7.9.0/66d82917.js";
 
-const DEFAULT_SUBPANEL_COLORS = new Map([
-  ["Nominating Bodies", "#1f77b4"],
-  ["Oireachtas", "#ff7f0e"],
+const DEFAULT_PARTY_COLORS = new Map([
+  ["Fianna Fáil", "#2c8737"],
+  ["Sinn Féin", "#088460"],
+  ["Fine Gael", "#303591"],
+  ["Independent", "#666666"],
+  ["Labour Party", "#c82832"],
+  ["Social Democrats", "#782b81"],
+  ["Independent Ireland", "#087b87"],
+  ["People Before Profit-Solidarity", "#be417d"],
+  ["Aontú", "#b35400"],
+  ["100% RDR", "#985564"],
+  ["Green Party", "#6c7e26"],
+  ["Irish Freedom Party", "#1f77b4"],
+  ["Liberty Republic", "#ff7f0e"],
 ]);
 
 export function electionBarRace({
@@ -11,8 +22,14 @@ export function electionBarRace({
   visibleBars = 10,
   barSize = 42,
   duration = 180,
-  subPanelColors = DEFAULT_SUBPANEL_COLORS,
+  partyColors = DEFAULT_PARTY_COLORS,
 } = {}) {
+  const rootStyles = getComputedStyle(document.documentElement);
+  const themeColour = (name, fallback) => rootStyles.getPropertyValue(name).trim() || fallback;
+  const textColour = themeColour("--text", "#4a463d");
+  const textSoftColour = themeColour("--text-soft", "#5f5a50");
+  const goldColour = themeColour("--gold", "#7f6c2e");
+  const gridColour = themeColour("--chart-grid", "#8a8578");
   const fallback = document.createElement("div");
   fallback.className = "chart-loading";
 
@@ -38,6 +55,7 @@ export function electionBarRace({
 
   const names = data.candidates.map((d) => d.name);
   const quota = Number(data.quota) || 0;
+  const seats = Number(data.seats) || 0;
   const maxCount =
     Number(data.maxCount) || d3.max(data.counts, (d) => Number(d.count)) || 1;
   const maxValue =
@@ -47,8 +65,8 @@ export function electionBarRace({
     ) ||
     1;
 
-  const subPanelByName = new Map(
-    data.candidates.map((candidate) => [candidate.name, candidate.subPanel]),
+  const partyByName = new Map(
+    data.candidates.map((candidate) => [candidate.name, candidate.party]),
   );
 
   const x = d3.scaleLinear([0, maxValue], [marginLeft, width - marginRight]);
@@ -59,8 +77,8 @@ export function electionBarRace({
     .rangeRound([marginTop, marginTop + barSize * (n + 1 + 0.15)])
     .padding(0.12);
 
-  function getSubPanelColor(name) {
-    return subPanelColors.get(subPanelByName.get(name)) ?? "#8a8578";
+  function getPartyColor(name) {
+    return partyColors.get(partyByName.get(name)) ?? "#8a8578";
   }
 
   function rank(value) {
@@ -149,6 +167,7 @@ export function electionBarRace({
 
   const axisGroup = svg
     .append("g")
+    .attr("class", "election-bar-race__axis")
     .attr("transform", `translate(0,${marginTop})`);
 
   const axis = d3
@@ -162,18 +181,18 @@ export function electionBarRace({
     axisGroup.select(".tick:first-of-type text").remove();
     axisGroup
       .selectAll(".tick:not(:first-of-type) line")
-      .attr("stroke", "#8a8578")
+      .attr("stroke", gridColour)
       .attr("stroke-opacity", 0.35);
     axisGroup.select(".domain").remove();
     axisGroup
       .selectAll("text")
       .style("font-family", "IBM Plex Sans")
       .style("font-size", "12px")
-      .attr("fill", "#5f5a50");
+      .attr("fill", textSoftColour);
   }
 
   if (quota > 0) {
-    const quotaGroup = svg.append("g");
+    const quotaGroup = svg.append("g").attr("class", "election-bar-race__quota");
 
     quotaGroup
       .append("line")
@@ -181,7 +200,7 @@ export function electionBarRace({
       .attr("x2", x(quota))
       .attr("y1", marginTop)
       .attr("y2", height - marginBottom)
-      .attr("stroke", "#7F6C2E")
+      .attr("stroke", goldColour)
       .attr("stroke-width", 2)
       .attr("stroke-dasharray", "4,4")
       .attr("opacity", 0.9);
@@ -191,7 +210,7 @@ export function electionBarRace({
       .attr("x", x(quota) + 6)
       .attr("y", height - marginBottom - 8)
       .attr("text-anchor", "start")
-      .attr("fill", "#7F6C2E")
+      .attr("fill", goldColour)
       .style("font-family", "IBM Plex Sans")
       .style("font-size", "12px")
       .style("font-weight", "600")
@@ -207,17 +226,15 @@ export function electionBarRace({
         (enter) =>
           enter
             .append("rect")
-            .attr("fill", (d) => getSubPanelColor(d.name))
+            .attr("fill", (d) => getPartyColor(d.name))
             .attr("fill-opacity", (d) =>
-              getStatus(count, d.name) === "Excluded" ? 0.35 : 1,
+              getStatus(count, d.name) === "Eliminated" ? 0.35 : 1,
             )
             .attr("stroke", (d) =>
-              getStatus(count, d.name) === "Deemed Elected"
-                ? "#7F6C2E"
-                : "none",
+              getStatus(count, d.name) === "Elected" ? goldColour : "none",
             )
             .attr("stroke-width", (d) =>
-              getStatus(count, d.name) === "Deemed Elected" ? 2 : 0,
+              getStatus(count, d.name) === "Elected" ? 2 : 0,
             )
             .attr("rx", 3)
             .attr("height", y.bandwidth())
@@ -237,15 +254,14 @@ export function electionBarRace({
       .transition(transition)
       .attr("y", (d) => y(d.rank))
       .attr("width", (d) => x(d.value) - x(0))
-      .attr("fill", (d) => getSubPanelColor(d.name))
       .attr("fill-opacity", (d) =>
-        getStatus(count, d.name) === "Excluded" ? 0.35 : 1,
+        getStatus(count, d.name) === "Eliminated" ? 0.35 : 1,
       )
       .attr("stroke", (d) =>
-        getStatus(count, d.name) === "Deemed Elected" ? "#7F6C2E" : "none",
+        getStatus(count, d.name) === "Elected" ? goldColour : "none",
       )
       .attr("stroke-width", (d) =>
-        getStatus(count, d.name) === "Deemed Elected" ? 2 : 0,
+        getStatus(count, d.name) === "Elected" ? 2 : 0,
       );
   }
 
@@ -314,11 +330,12 @@ export function electionBarRace({
 
   const ticker = svg
     .append("text")
+    .attr("class", "election-bar-race__ticker")
     .style("font-family", "IBM Plex Sans")
     .style("font-size", `${barSize}px`)
     .style("font-weight", "700")
     .style("font-variant-numeric", "tabular-nums")
-    .attr("fill", "#444444")
+    .attr("fill", textColour)
     .attr("text-anchor", "end")
     .attr("x", width - 6)
     .attr("y", marginTop + barSize * (n - 0.45))

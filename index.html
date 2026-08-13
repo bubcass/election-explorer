@@ -7,10 +7,10 @@
 <title>Dáil Éireann | Election Explorer | Houses of the Oireachtas</title>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&amp;display=swap" crossorigin>
-<link rel="preload" as="style" href="./_import/style.b0a6a992.css">
+<link rel="preload" as="style" href="./_import/style.a9037b2d.css">
 <link rel="preload" as="style" href="./_npm/leaflet@1.9.4/dist/leaflet.css">
 <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&amp;display=swap" crossorigin>
-<link rel="stylesheet" type="text/css" href="./_import/style.b0a6a992.css">
+<link rel="stylesheet" type="text/css" href="./_import/style.a9037b2d.css">
 <link rel="stylesheet" type="text/css" href="./_npm/leaflet@1.9.4/dist/leaflet.css">
 <link rel="modulepreload" href="./_observablehq/client.5cea8408.js">
 <link rel="modulepreload" href="./_observablehq/runtime.607a8173.js">
@@ -19,8 +19,9 @@
 <link rel="modulepreload" href="./_npm/@observablehq/plot@0.6.17/a96a6bbb.js">
 <link rel="modulepreload" href="./_import/components/constituency-map.c6a7a042.js">
 <link rel="modulepreload" href="./_import/components/election-timeline-controls.2bc1e103.js">
-<link rel="modulepreload" href="./_import/components/electionBarRace.c61ae947.js">
-<link rel="modulepreload" href="./_import/components/election-section-nav.d1144e5d.js">
+<link rel="modulepreload" href="./_import/components/electionBarRace.58417376.js">
+<link rel="modulepreload" href="./_import/components/election-section-nav.263b35f7.js">
+<link rel="modulepreload" href="./_import/components/hero-share.0f8d6dd4.js">
 <link rel="modulepreload" href="./_npm/leaflet@1.9.4/721623d8.js">
 <link rel="modulepreload" href="./_npm/d3-array@3.2.4/e93ca09f.js">
 <link rel="modulepreload" href="./_npm/d3-axis@3.0.0/0f2de24d.js">
@@ -59,9 +60,28 @@
 <link rel="modulepreload" href="./_npm/binary-search-bounds@2.0.5/cbf6ba23.js">
 <link rel="modulepreload" href="./_npm/robust-predicates@3.0.3/42820bfa.js">
 
+    <link rel="preload" href="./_file/oireachtas-logo.be2bef67.svg" as="image" type="image/svg+xml">
     <link rel="icon" href="./_file/logo.2bab7aac.png" type="image/png" sizes="32x32">
     <script>
       document.documentElement.lang = "en-IE";
+
+      (() => {
+        const storageKey = "election-explorer-theme";
+        const colourScheme = window.matchMedia("(prefers-color-scheme: dark)");
+        const readSavedTheme = () => {
+          try {
+            const value = localStorage.getItem(storageKey);
+            return value === "dark" || value === "light" ? value : null;
+          } catch {
+            return null;
+          }
+        };
+        const systemTheme = () => colourScheme.matches ? "dark" : "light";
+        document.documentElement.dataset.theme = readSavedTheme() || systemTheme();
+        colourScheme.addEventListener("change", () => {
+          if (!readSavedTheme()) document.documentElement.dataset.theme = systemTheme();
+        });
+      })();
 
       const viewport = document.querySelector('meta[name="viewport"]');
       if (viewport) {
@@ -72,6 +92,117 @@
         meta.content = "width=device-width, initial-scale=1";
         document.head.appendChild(meta);
       }
+
+      (() => {
+        const setupOireachtasMasthead = () => {
+          if (!document.body || document.querySelector(".oireachtas-masthead")) return;
+
+          const masthead = document.createElement("header");
+          masthead.className = "oireachtas-masthead";
+          const inner = document.createElement("div");
+          inner.className = "oireachtas-masthead__inner";
+
+          const homeLink = document.createElement("a");
+          homeLink.className = "oireachtas-masthead__home";
+          homeLink.href = "https://www.oireachtas.ie/";
+          homeLink.setAttribute("aria-label", "Return to oireachtas.ie");
+          homeLink.title = "Return to oireachtas.ie";
+
+          const logo = document.createElement("img");
+          logo.className = "oireachtas-masthead__logo";
+          logo.alt = "";
+          logo.width = 163;
+          logo.height = 69;
+          logo.src = document.querySelector('link[rel="preload"][as="image"]')?.href || "oireachtas-logo.svg";
+          homeLink.appendChild(logo);
+
+          const resourceLink = document.createElement("a");
+          resourceLink.className = "oireachtas-masthead__resource";
+          resourceLink.href = "https://bubcass.github.io/open-data-insights/";
+          resourceLink.textContent = "Open Data Insights";
+          resourceLink.setAttribute("aria-label", "Open Data Insights home");
+
+          const actions = document.createElement("div");
+          actions.className = "oireachtas-masthead__actions";
+          inner.append(homeLink, resourceLink, actions);
+          masthead.appendChild(inner);
+
+          const mobileTools = document.createElement("div");
+          mobileTools.className = "mobile-reading-tools";
+          mobileTools.hidden = true;
+          mobileTools.innerHTML = `
+            <button class="mobile-reading-tools__back" type="button" aria-label="Go back" title="Go back">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m14.5 5-7 7 7 7"/></svg>
+            </button>
+            <div class="mobile-reading-tools__more-wrap">
+              <button class="mobile-reading-tools__more" type="button" aria-label="More options" aria-expanded="false" title="More options">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="5" cy="12" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="19" cy="12" r="1.5"/></svg>
+              </button>
+              <div class="mobile-reading-tools__menu" hidden></div>
+            </div>
+          `;
+
+          const backButton = mobileTools.querySelector(".mobile-reading-tools__back");
+          const moreButton = mobileTools.querySelector(".mobile-reading-tools__more");
+          const moreMenu = mobileTools.querySelector(".mobile-reading-tools__menu");
+          backButton.addEventListener("click", () => {
+            if (window.history.length > 1) window.history.back();
+            else window.location.href = resourceLink.href;
+          });
+          const setMoreOpen = (open) => {
+            moreMenu.hidden = !open;
+            moreButton.setAttribute("aria-expanded", String(open));
+          };
+          moreButton.addEventListener("click", () => setMoreOpen(moreMenu.hidden));
+          document.addEventListener("pointerdown", (event) => {
+            if (!moreMenu.hidden && !mobileTools.contains(event.target)) setMoreOpen(false);
+          });
+          document.addEventListener("keydown", (event) => {
+            if (event.key === "Escape" && !moreMenu.hidden) {
+              setMoreOpen(false);
+              moreButton.focus();
+            }
+          });
+
+          document.body.prepend(masthead);
+          document.body.appendChild(mobileTools);
+        };
+
+        if (document.readyState === "loading") {
+          document.addEventListener("DOMContentLoaded", setupOireachtasMasthead, {once: true});
+        } else {
+          setupOireachtasMasthead();
+        }
+      })();
+
+      (() => {
+        const setupBackToTop = () => {
+          if (!document.body || document.querySelector(".page-back-to-top")) return;
+          const button = document.createElement("button");
+          button.type = "button";
+          button.className = "page-back-to-top";
+          button.setAttribute("aria-label", "Back to top");
+          button.title = "Back to top";
+          button.hidden = true;
+          button.innerHTML = '<svg aria-hidden="true" viewBox="0 0 24 24"><path d="m6.5 14.5 5.5-5.5 5.5 5.5"/></svg>';
+          const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+          button.addEventListener("click", () => window.scrollTo({top: 0, behavior: reducedMotion.matches ? "auto" : "smooth"}));
+          let pending = false;
+          const update = () => {
+            pending = false;
+            button.hidden = window.scrollY <= 640;
+          };
+          window.addEventListener("scroll", () => {
+            if (pending) return;
+            pending = true;
+            window.requestAnimationFrame(update);
+          }, {passive: true});
+          document.body.appendChild(button);
+          update();
+        };
+        if (document.readyState !== "complete") window.addEventListener("load", setupBackToTop, {once: true});
+        else setupBackToTop();
+      })();
     </script>
   
 <script type="module">
@@ -87,8 +218,8 @@ registerFile("./data/geo/constituencies.json", {"name":"./data/geo/constituencie
 registerFile("./data/members-lookup.json", {"name":"./data/members-lookup.json","mimeType":"application/json","path":"./_file/data/members-lookup.5a575ad4.json","lastModified":1775303425959,"size":121021});
 registerFile("./media/election.mp4", {"name":"./media/election.mp4","mimeType":"video/mp4","path":"./_file/media/election.c68f2e1b.mp4","lastModified":1775503093166,"size":2601178});
 
-define({id: "ebc88af8", inputs: ["FileAttachment","ResizeObserver","parent","SVGElement"], outputs: ["d3","Plot","constituencyMap","electionTimelineControls","electionBarRace","renderElectionSectionNav","ensureLeafletCss","format","heroVideoPromise","normalisedPromise","finalRowsPromise","barRacePromise","constituenciesGeoPromise","membersLookupPromise","downloadHrefPromise","partyColorMap","getState","chartPlaceholder","mountReactive","clean","cleanConstituencyName","canonicalPersonName","getDisplayNameFromElection","fixPlotAria","getColorChoices","renderColorLegend","renderStatusLegend","getResults","getFinalRows","getBarRaceConstituency","getConstituenciesGeo","getMembersLookup","getMembersArray","getFilteredConstituencyGeo","getAvailableConstituencies","getConstituencySummary","getMatchedElectedMembers","getCountRows","getActiveCountLabel","getWaffleRows","splitIntoTwoRows","renderQuotaWaffleChunk","renderConstituencySelect","renderSegmentedControl","getCandidateOptions","ensureValidCandidateFocus","getCandidateRecord","getCandidateNarrative"], body: async (FileAttachment,ResizeObserver,parent,SVGElement) => {
-const [d3, Plot, {constituencyMap}, {electionTimelineControls}, {electionBarRace}, {renderElectionSectionNav}] = await Promise.all([import("./_npm/d3@7.9.0/66d82917.js"), import("./_npm/@observablehq/plot@0.6.17/a96a6bbb.js"), import("./_import/components/constituency-map.c6a7a042.js"), import("./_import/components/election-timeline-controls.2bc1e103.js"), import("./_import/components/electionBarRace.c61ae947.js"), import("./_import/components/election-section-nav.d1144e5d.js")]);
+define({id: "a227e312", inputs: ["FileAttachment","ResizeObserver","parent","getComputedStyle","SVGElement"], outputs: ["d3","Plot","constituencyMap","electionTimelineControls","electionBarRace","renderElectionSectionNav","enhanceHeroWithShare","ensureLeafletCss","format","heroVideoPromise","normalisedPromise","finalRowsPromise","barRacePromise","constituenciesGeoPromise","membersLookupPromise","downloadHrefPromise","partyColorMap","getState","themeColour","chartPlaceholder","mountReactive","clean","cleanConstituencyName","canonicalPersonName","getDisplayNameFromElection","fixPlotAria","getColorChoices","renderColorLegend","renderStatusLegend","getResults","getFinalRows","getBarRaceConstituency","getConstituenciesGeo","getMembersLookup","getMembersArray","getFilteredConstituencyGeo","getAvailableConstituencies","getConstituencySummary","getMatchedElectedMembers","getCountRows","getActiveCountLabel","getWaffleRows","splitIntoTwoRows","renderQuotaWaffleChunk","renderConstituencySelect","renderSegmentedControl","getCandidateOptions","ensureValidCandidateFocus","getCandidateRecord","getCandidateNarrative"], body: async (FileAttachment,ResizeObserver,parent,getComputedStyle,SVGElement) => {
+const [d3, Plot, {constituencyMap}, {electionTimelineControls}, {electionBarRace}, {renderElectionSectionNav}, {enhanceHeroWithShare}] = await Promise.all([import("./_npm/d3@7.9.0/66d82917.js"), import("./_npm/@observablehq/plot@0.6.17/a96a6bbb.js"), import("./_import/components/constituency-map.c6a7a042.js"), import("./_import/components/election-timeline-controls.2bc1e103.js"), import("./_import/components/electionBarRace.58417376.js"), import("./_import/components/election-section-nav.263b35f7.js"), import("./_import/components/hero-share.0f8d6dd4.js")]);
 
 async function ensureLeafletCss() {
   if (typeof document === "undefined") return;
@@ -198,6 +329,10 @@ if (!window.electionsState) {
 
 function getState() {
   return window.electionsState;
+}
+
+function themeColour(name, fallback) {
+  return getComputedStyle(document.documentElement).getPropertyValue(name).trim() || fallback;
 }
 
 function chartPlaceholder(height = 320, text = "Updating…") {
@@ -627,7 +762,7 @@ function renderQuotaWaffleChunk(rows, { width = 1000 } = {}) {
       Plot.waffleY(backgroundRows, {
         fx: "displayName",
         y: "baseline",
-        fill: "#d8d1c2",
+        fill: themeColour("--chart-neutral", "#d8d1c2"),
         fillOpacity: 0.7,
         rx: "100%"
       }),
@@ -643,7 +778,7 @@ function renderQuotaWaffleChunk(rows, { width = 1000 } = {}) {
         frameAnchor: "bottom",
         lineAnchor: "top",
         dy: 8,
-        fill: (d) => (d.quotaPct > 0 ? d.status : "#c6c2b9"),
+        fill: (d) => (d.quotaPct > 0 ? d.status : themeColour("--chart-neutral-soft", "#c6c2b9")),
         fontSize: 20,
         fontFamily: "IBM Plex Sans",
         fontWeight: "bold"
@@ -865,10 +1000,22 @@ async function getCandidateNarrative() {
   const peakVotes = d3.max(candidateRecord, (d) => d.votes) ?? 0;
   return `<strong>${candidate.displayName}</strong> ran as a <strong>${candidate.party ?? "Independent"}</strong> candidate and <strong>did not exceed the quota</strong>, reaching a peak of ${format(peakVotes)} votes.`;
 }
-return {d3,Plot,constituencyMap,electionTimelineControls,electionBarRace,renderElectionSectionNav,ensureLeafletCss,format,heroVideoPromise,normalisedPromise,finalRowsPromise,barRacePromise,constituenciesGeoPromise,membersLookupPromise,downloadHrefPromise,partyColorMap,getState,chartPlaceholder,mountReactive,clean,cleanConstituencyName,canonicalPersonName,getDisplayNameFromElection,fixPlotAria,getColorChoices,renderColorLegend,renderStatusLegend,getResults,getFinalRows,getBarRaceConstituency,getConstituenciesGeo,getMembersLookup,getMembersArray,getFilteredConstituencyGeo,getAvailableConstituencies,getConstituencySummary,getMatchedElectedMembers,getCountRows,getActiveCountLabel,getWaffleRows,splitIntoTwoRows,renderQuotaWaffleChunk,renderConstituencySelect,renderSegmentedControl,getCandidateOptions,ensureValidCandidateFocus,getCandidateRecord,getCandidateNarrative};
+return {d3,Plot,constituencyMap,electionTimelineControls,electionBarRace,renderElectionSectionNav,enhanceHeroWithShare,ensureLeafletCss,format,heroVideoPromise,normalisedPromise,finalRowsPromise,barRacePromise,constituenciesGeoPromise,membersLookupPromise,downloadHrefPromise,partyColorMap,getState,themeColour,chartPlaceholder,mountReactive,clean,cleanConstituencyName,canonicalPersonName,getDisplayNameFromElection,fixPlotAria,getColorChoices,renderColorLegend,renderStatusLegend,getResults,getFinalRows,getBarRaceConstituency,getConstituenciesGeo,getMembersLookup,getMembersArray,getFilteredConstituencyGeo,getAvailableConstituencies,getConstituencySummary,getMatchedElectedMembers,getCountRows,getActiveCountLabel,getWaffleRows,splitIntoTwoRows,renderQuotaWaffleChunk,renderConstituencySelect,renderSegmentedControl,getCandidateOptions,ensureValidCandidateFocus,getCandidateRecord,getCandidateNarrative};
 }});
 
-define({id: "a515da42", inputs: ["display","mountReactive","heroVideoPromise"], body: (display,mountReactive,heroVideoPromise) => {
+define({id: "c56313d9", inputs: ["display","renderElectionSectionNav"], body: (display,renderElectionSectionNav) => {
+display(
+  renderElectionSectionNav({
+    currentSection: "dail",
+    hrefs: {
+      dail: "./",
+      seanad: "./seanad/"
+    }
+  })
+);
+}});
+
+define({id: "643db940", inputs: ["display","mountReactive","heroVideoPromise","enhanceHeroWithShare"], body: (display,mountReactive,heroVideoPromise,enhanceHeroWithShare) => {
 display(
   mountReactive("hero", async (el, { skeletonOnly, isCurrent }) => {
     if (skeletonOnly) {
@@ -900,18 +1047,10 @@ display(
         </div>
       </div>
     `;
-  })
-);
-}});
-
-define({id: "c56313d9", inputs: ["display","renderElectionSectionNav"], body: (display,renderElectionSectionNav) => {
-display(
-  renderElectionSectionNav({
-    currentSection: "dail",
-    hrefs: {
-      dail: "./",
-      seanad: "./seanad/"
-    }
+    enhanceHeroWithShare(el, {
+      title: "Election Explorer: 34th Dáil",
+      text: "A data-driven exploration of the 2024 general election."
+    });
   })
 );
 }});
@@ -1245,7 +1384,7 @@ display(
 );
 }});
 
-define({id: "297438c2", inputs: ["display","mountReactive","chartPlaceholder","getCountRows","getConstituencySummary","getColorChoices","getState","getDisplayNameFromElection","d3","renderColorLegend","Plot","format","fixPlotAria"], body: (display,mountReactive,chartPlaceholder,getCountRows,getConstituencySummary,getColorChoices,getState,getDisplayNameFromElection,d3,renderColorLegend,Plot,format,fixPlotAria) => {
+define({id: "8a7c6108", inputs: ["display","mountReactive","chartPlaceholder","getCountRows","getConstituencySummary","getColorChoices","getState","getDisplayNameFromElection","d3","renderColorLegend","Plot","themeColour","format","fixPlotAria"], body: (display,mountReactive,chartPlaceholder,getCountRows,getConstituencySummary,getColorChoices,getState,getDisplayNameFromElection,d3,renderColorLegend,Plot,themeColour,format,fixPlotAria) => {
 display(
   mountReactive("", async (el, { skeletonOnly, isCurrent }) => {
     if (skeletonOnly) {
@@ -1315,7 +1454,7 @@ display(
       marks: [
         Plot.ruleX([0]),
         Plot.ruleX([quota], {
-          stroke: "#6b5922",
+          stroke: themeColour("--gold", "#6b5922"),
           strokeDasharray: "4,4"
         }),
         Plot.link(plottedRows, {
@@ -1342,7 +1481,7 @@ display(
           dx: 26,
           textAnchor: "start",
           lineAnchor: "middle",
-          fill: "#4a463d",
+          fill: themeColour("--text", "#4a463d"),
           fontSize: 12
         })
       ]
@@ -1783,9 +1922,9 @@ display(
 <body>
 <div id="observablehq-center">
 <main id="observablehq-main" class="observablehq">
-<div class="observablehq observablehq--block"><!--:ebc88af8:--></div>
-<div class="observablehq observablehq--block"><!--:a515da42:--></div>
+<div class="observablehq observablehq--block"><!--:a227e312:--></div>
 <div class="observablehq observablehq--block"><!--:c56313d9:--></div>
+<div class="observablehq observablehq--block"><!--:643db940:--></div>
 <div class="prose-block">
 <p>Election Explorer is part of our <strong><a href="https://bubcass.github.io/open-data-insights/" target="_self" rel="noopener noreferrer">Open Data Insights</a></strong> series.</p>
 <p>The latest election of TDs took place in November 2024 and 174 Members were returned from 43 constituencies. Take a look at how it unfolded by constituency,  count and candidate.</p>
@@ -1818,7 +1957,7 @@ display(
 </div>
 <div class="observablehq observablehq--block"><!--:8db24351:--></div>
 <div class="chart-block chart-block--wide">
-<div class="observablehq observablehq--block"><!--:297438c2:--></div>
+<div class="observablehq observablehq--block"><!--:8a7c6108:--></div>
 </div>
 <div class="observablehq observablehq--block"><!--:f5bdf176:--></div>
 <div class="chart-block">
