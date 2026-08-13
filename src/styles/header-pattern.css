@@ -215,7 +215,7 @@
     }
 
     .section-nav--docked .section-nav__list { min-height: var(--masthead-height); }
-    .section-nav--docked .section-nav__link { color: var(--link); }
+    .section-nav--docked .section-nav__link { color: var(--text); }
     .section-nav--docked .section-nav__link[aria-current="page"] { color: var(--text); }
 }
 
