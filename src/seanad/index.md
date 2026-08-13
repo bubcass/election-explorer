@@ -13,6 +13,7 @@ import { electionBarRace } from "./electionBarRace.js";
 import { panelSelect } from "./panel-select.js";
 import { renderTimelineControls } from "./renderTimelineControls.js";
 import { renderElectionSectionNav } from "../components/election-section-nav.js";
+import { enhanceHeroWithShare } from "../components/hero-share.js";
 
 const format = d3.format(",d");
 const heroImagePromise = FileAttachment("media/seanad_election.jpg").url();
@@ -74,6 +75,10 @@ if (!window.electionsState) {
 
 function getState() {
   return window.electionsState;
+}
+
+function themeColour(name, fallback) {
+  return getComputedStyle(document.documentElement).getPropertyValue(name).trim() || fallback;
 }
 
 function chartPlaceholder(height = 320, text = "Updating…") {
@@ -564,7 +569,7 @@ function renderQuotaWaffleChunk(rows, { width = 1000 } = {}) {
       Plot.waffleY(backgroundRows, {
         fx: "displayName",
         y: "baseline",
-        fill: "#d8d1c2",
+        fill: themeColour("--chart-neutral", "#d8d1c2"),
         fillOpacity: 0.7,
         rx: "100%"
       }),
@@ -580,7 +585,7 @@ function renderQuotaWaffleChunk(rows, { width = 1000 } = {}) {
         frameAnchor: "bottom",
         lineAnchor: "top",
         dy: 8,
-        fill: (d) => (d.quotaPct > 0 ? d.status : "#c6c2b9"),
+        fill: (d) => (d.quotaPct > 0 ? d.status : themeColour("--chart-neutral-soft", "#c6c2b9")),
         fontSize: 20,
         fontFamily: "IBM Plex Sans",
         fontWeight: "bold"
@@ -756,7 +761,7 @@ function renderLollipopChart(
     },
     marks: [
       Plot.ruleX([quota], {
-        stroke: "#6b5922",
+        stroke: themeColour("--gold", "#6b5922"),
         strokeWidth: 2,
         strokeDasharray: "4,4"
       }),
@@ -779,7 +784,7 @@ function renderLollipopChart(
           dx: 30,
           dy: 0,
           textAnchor: "start",
-          fill: "#4a463d",
+          fill: themeColour("--text", "#4a463d"),
           fontSize: 12
         }
       ),
@@ -799,6 +804,18 @@ function renderLollipopChart(
   fixPlotAria(chart);
   return chart;
 }
+```
+
+```js
+display(
+  renderElectionSectionNav({
+    currentSection: "seanad",
+    hrefs: {
+      dail: "../",
+      seanad: "./"
+    }
+  })
+);
 ```
 
 ```js
@@ -830,18 +847,10 @@ display(
         </div>
       </div>
     `;
-  })
-);
-```
-
-```js
-display(
-  renderElectionSectionNav({
-    currentSection: "seanad",
-    hrefs: {
-      dail: "../",
-      seanad: "./"
-    }
+    enhanceHeroWithShare(el, {
+      title: "Election Explorer: 27th Seanad",
+      text: "A data-driven exploration of the 2025 Seanad general election."
+    });
   })
 );
 ```

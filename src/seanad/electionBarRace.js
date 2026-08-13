@@ -13,6 +13,12 @@ export function electionBarRace({
   duration = 180,
   subPanelColors = DEFAULT_SUBPANEL_COLORS,
 } = {}) {
+  const rootStyles = getComputedStyle(document.documentElement);
+  const themeColour = (name, fallback) => rootStyles.getPropertyValue(name).trim() || fallback;
+  const textColour = themeColour("--text", "#4a463d");
+  const textSoftColour = themeColour("--text-soft", "#5f5a50");
+  const goldColour = themeColour("--gold", "#7f6c2e");
+  const gridColour = themeColour("--chart-grid", "#8a8578");
   const fallback = document.createElement("div");
   fallback.className = "chart-loading";
 
@@ -149,6 +155,7 @@ export function electionBarRace({
 
   const axisGroup = svg
     .append("g")
+    .attr("class", "election-bar-race__axis")
     .attr("transform", `translate(0,${marginTop})`);
 
   const axis = d3
@@ -162,18 +169,18 @@ export function electionBarRace({
     axisGroup.select(".tick:first-of-type text").remove();
     axisGroup
       .selectAll(".tick:not(:first-of-type) line")
-      .attr("stroke", "#8a8578")
+      .attr("stroke", gridColour)
       .attr("stroke-opacity", 0.35);
     axisGroup.select(".domain").remove();
     axisGroup
       .selectAll("text")
       .style("font-family", "IBM Plex Sans")
       .style("font-size", "12px")
-      .attr("fill", "#5f5a50");
+      .attr("fill", textSoftColour);
   }
 
   if (quota > 0) {
-    const quotaGroup = svg.append("g");
+    const quotaGroup = svg.append("g").attr("class", "election-bar-race__quota");
 
     quotaGroup
       .append("line")
@@ -181,7 +188,7 @@ export function electionBarRace({
       .attr("x2", x(quota))
       .attr("y1", marginTop)
       .attr("y2", height - marginBottom)
-      .attr("stroke", "#7F6C2E")
+      .attr("stroke", goldColour)
       .attr("stroke-width", 2)
       .attr("stroke-dasharray", "4,4")
       .attr("opacity", 0.9);
@@ -191,7 +198,7 @@ export function electionBarRace({
       .attr("x", x(quota) + 6)
       .attr("y", height - marginBottom - 8)
       .attr("text-anchor", "start")
-      .attr("fill", "#7F6C2E")
+      .attr("fill", goldColour)
       .style("font-family", "IBM Plex Sans")
       .style("font-size", "12px")
       .style("font-weight", "600")
@@ -213,7 +220,7 @@ export function electionBarRace({
             )
             .attr("stroke", (d) =>
               getStatus(count, d.name) === "Deemed Elected"
-                ? "#7F6C2E"
+                ? goldColour
                 : "none",
             )
             .attr("stroke-width", (d) =>
@@ -242,7 +249,7 @@ export function electionBarRace({
         getStatus(count, d.name) === "Excluded" ? 0.35 : 1,
       )
       .attr("stroke", (d) =>
-        getStatus(count, d.name) === "Deemed Elected" ? "#7F6C2E" : "none",
+        getStatus(count, d.name) === "Deemed Elected" ? goldColour : "none",
       )
       .attr("stroke-width", (d) =>
         getStatus(count, d.name) === "Deemed Elected" ? 2 : 0,
@@ -314,11 +321,12 @@ export function electionBarRace({
 
   const ticker = svg
     .append("text")
+    .attr("class", "election-bar-race__ticker")
     .style("font-family", "IBM Plex Sans")
     .style("font-size", `${barSize}px`)
     .style("font-weight", "700")
     .style("font-variant-numeric", "tabular-nums")
-    .attr("fill", "#444444")
+    .attr("fill", textColour)
     .attr("text-anchor", "end")
     .attr("x", width - 6)
     .attr("y", marginTop + barSize * (n - 0.45))

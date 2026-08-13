@@ -35,6 +35,8 @@ html {
 }
 
 body {
+    width: 100%;
+    max-width: none;
     margin: 0 auto;
     background: var(--page-bg);
     color: var(--text);
@@ -49,11 +51,19 @@ body {
     line-height: 1.6;
 }
 
-main,
-.observablehq {
+main.observablehq {
     max-width: var(--page-max);
     margin: 0 auto;
     padding: var(--space-5) var(--space-5) var(--space-7);
+}
+
+/* Page-shell spacing belongs on the main element only. Observable also uses
+   .observablehq on every JavaScript cell; padding those cells creates a large
+   accumulated gap before the first visible component. */
+main.observablehq > .observablehq--block {
+    max-width: none;
+    margin: 0;
+    padding: 0;
 }
 
 .observablehq--block:has(> .hero),
@@ -362,8 +372,7 @@ a:focus-visible {
         font-size: 0.95rem;
     }
 
-    main,
-    .observablehq {
+    main.observablehq {
         padding: var(--space-4) var(--space-4) var(--space-6);
     }
 

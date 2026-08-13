@@ -13,6 +13,7 @@ import { constituencyMap } from "./components/constituency-map.js";
 import { electionTimelineControls } from "./components/election-timeline-controls.js";
 import { electionBarRace } from "./components/electionBarRace.js";
 import { renderElectionSectionNav } from "./components/election-section-nav.js";
+import { enhanceHeroWithShare } from "./components/hero-share.js";
 
 async function ensureLeafletCss() {
   if (typeof document === "undefined") return;
@@ -122,6 +123,10 @@ if (!window.electionsState) {
 
 function getState() {
   return window.electionsState;
+}
+
+function themeColour(name, fallback) {
+  return getComputedStyle(document.documentElement).getPropertyValue(name).trim() || fallback;
 }
 
 function chartPlaceholder(height = 320, text = "Updating…") {
@@ -551,7 +556,7 @@ function renderQuotaWaffleChunk(rows, { width = 1000 } = {}) {
       Plot.waffleY(backgroundRows, {
         fx: "displayName",
         y: "baseline",
-        fill: "#d8d1c2",
+        fill: themeColour("--chart-neutral", "#d8d1c2"),
         fillOpacity: 0.7,
         rx: "100%"
       }),
@@ -567,7 +572,7 @@ function renderQuotaWaffleChunk(rows, { width = 1000 } = {}) {
         frameAnchor: "bottom",
         lineAnchor: "top",
         dy: 8,
-        fill: (d) => (d.quotaPct > 0 ? d.status : "#c6c2b9"),
+        fill: (d) => (d.quotaPct > 0 ? d.status : themeColour("--chart-neutral-soft", "#c6c2b9")),
         fontSize: 20,
         fontFamily: "IBM Plex Sans",
         fontWeight: "bold"
@@ -793,6 +798,18 @@ async function getCandidateNarrative() {
 
 ```js
 display(
+  renderElectionSectionNav({
+    currentSection: "dail",
+    hrefs: {
+      dail: "./",
+      seanad: "./seanad/"
+    }
+  })
+);
+```
+
+```js
+display(
   mountReactive("hero", async (el, { skeletonOnly, isCurrent }) => {
     if (skeletonOnly) {
       el.innerHTML = `<div class="hero__media skeleton-shimmer"></div>`;
@@ -823,18 +840,10 @@ display(
         </div>
       </div>
     `;
-  })
-);
-```
-
-```js
-display(
-  renderElectionSectionNav({
-    currentSection: "dail",
-    hrefs: {
-      dail: "./",
-      seanad: "./seanad/"
-    }
+    enhanceHeroWithShare(el, {
+      title: "Election Explorer: 34th Dáil",
+      text: "A data-driven exploration of the 2024 general election."
+    });
   })
 );
 ```
@@ -1275,7 +1284,7 @@ display(
       marks: [
         Plot.ruleX([0]),
         Plot.ruleX([quota], {
-          stroke: "#6b5922",
+          stroke: themeColour("--gold", "#6b5922"),
           strokeDasharray: "4,4"
         }),
         Plot.link(plottedRows, {
@@ -1302,7 +1311,7 @@ display(
           dx: 26,
           textAnchor: "start",
           lineAnchor: "middle",
-          fill: "#4a463d",
+          fill: themeColour("--text", "#4a463d"),
           fontSize: 12
         })
       ]
