@@ -14,6 +14,7 @@ import { electionTimelineControls } from "./components/election-timeline-control
 import { electionBarRace } from "./components/electionBarRace.js";
 import { renderElectionSectionNav } from "./components/election-section-nav.js";
 import { enhanceHeroWithShare } from "./components/hero-share.js";
+import { detectConstituencyFromLocation } from "./components/constituency-location.js";
 
 async function ensureLeafletCss() {
   if (typeof document === "undefined") return;
@@ -652,9 +653,12 @@ function renderConstituencySelect(options, selectedValue) {
   wrap.className = "election-constituency-select";
 
   wrap.innerHTML = `
-    <label class="control control--constituency">
-      <span class="control-label">Select a constituency</span>
-      <select class="control-input">
+    <div class="control control--constituency">
+      <div class="constituency-control-heading">
+        <label for="election-constituency-select" class="control-label">Select a constituency</label>
+        <button type="button" class="constituency-location-action">Use my location</button>
+      </div>
+      <select id="election-constituency-select" class="control-input">
         ${options
           .map(
             (value) => `
@@ -665,16 +669,49 @@ function renderConstituencySelect(options, selectedValue) {
           )
           .join("")}
       </select>
-    </label>
+      <span class="constituency-location-status" aria-live="polite"></span>
+    </div>
   `;
 
   const select = wrap.querySelector("select");
+  const locateButton = wrap.querySelector(".constituency-location-action");
+  const locateStatus = wrap.querySelector(".constituency-location-status");
 
-  select?.addEventListener("change", () => {
-    window.electionsState.constituency = select.value;
+  function selectConstituency(constituency) {
+    window.electionsState.constituency = constituency;
     window.electionsState.count = null;
     window.electionsState.candidateFocus = null;
     window.dispatchEvent(new CustomEvent("elections:change"));
+  }
+
+  select?.addEventListener("change", () => {
+    locateStatus.textContent = "";
+    selectConstituency(select.value);
+  });
+
+  locateButton?.addEventListener("click", async () => {
+    locateButton.disabled = true;
+    locateButton.textContent = "Finding constituency…";
+    locateStatus.textContent = "";
+
+    try {
+      const result = await detectConstituencyFromLocation({
+        constituencyGeoJSON: await getConstituenciesGeo(),
+        availableConstituencies: options,
+      });
+
+      if (result.ok && options.includes(result.constituency)) {
+        select.value = result.constituency;
+        selectConstituency(result.constituency);
+      } else {
+        locateStatus.textContent = "Location unavailable — choose from the list.";
+      }
+    } catch {
+      locateStatus.textContent = "Location unavailable — choose from the list.";
+    } finally {
+      locateButton.disabled = false;
+      locateButton.textContent = "Use my location";
+    }
   });
 
   return wrap;

@@ -641,6 +641,55 @@
     letter-spacing: 0.01em;
 }
 
+.constituency-control-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.constituency-location-action {
+    appearance: none;
+    border: 0;
+    padding: 0;
+    background: transparent;
+    color: var(--text-soft);
+    font: inherit;
+    font-size: 0.82rem;
+    font-weight: 600;
+    line-height: 1.3;
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.18em;
+    cursor: pointer;
+}
+
+.constituency-location-action:hover,
+.constituency-location-action:focus-visible {
+    color: var(--text);
+}
+
+.constituency-location-action:focus-visible {
+    outline: 2px solid var(--focus-ring);
+    outline-offset: 3px;
+}
+
+.constituency-location-action:disabled {
+    opacity: 0.65;
+    cursor: wait;
+}
+
+.constituency-location-status {
+    display: block;
+    color: var(--text-soft);
+    font-size: 0.82rem;
+    line-height: 1.35;
+}
+
+.constituency-location-status:empty {
+    display: none;
+}
+
 .election-panel-select .control-input,
 .election-constituency-select .control-input,
 .election-candidate-select .control-input,
