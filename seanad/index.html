@@ -7,9 +7,9 @@
 <title>Seanad Éireann | Election Explorer | Houses of the Oireachtas</title>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&amp;display=swap" crossorigin>
-<link rel="preload" as="style" href="../_import/style.6aa93c30.css">
+<link rel="preload" as="style" href="../_import/style.110a4d5d.css">
 <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&amp;display=swap" crossorigin>
-<link rel="stylesheet" type="text/css" href="../_import/style.6aa93c30.css">
+<link rel="stylesheet" type="text/css" href="../_import/style.110a4d5d.css">
 <link rel="modulepreload" href="../_observablehq/client.5cea8408.js">
 <link rel="modulepreload" href="../_observablehq/runtime.607a8173.js">
 <link rel="modulepreload" href="../_observablehq/stdlib.277aeab8.js">
@@ -19,7 +19,7 @@
 <link rel="modulepreload" href="../_import/seanad/panel-select.b0b557b9.js">
 <link rel="modulepreload" href="../_import/seanad/renderTimelineControls.f93c0bd3.js">
 <link rel="modulepreload" href="../_import/components/election-section-nav.263b35f7.js">
-<link rel="modulepreload" href="../_import/components/hero-share.0f8d6dd4.js">
+<link rel="modulepreload" href="../_import/components/hero-share.0ed59f0f.js">
 <link rel="modulepreload" href="../_npm/d3-array@3.2.4/e93ca09f.js">
 <link rel="modulepreload" href="../_npm/d3-axis@3.0.0/0f2de24d.js">
 <link rel="modulepreload" href="../_npm/d3-brush@3.0.0/65eb105b.js">
@@ -63,11 +63,16 @@
       document.documentElement.lang = "en-IE";
 
       (() => {
-        const storageKey = "election-explorer-theme";
+        const storageKey = "oireachtas-insights-theme";
+        const legacyStorageKey = "election-explorer-theme";
         const colourScheme = window.matchMedia("(prefers-color-scheme: dark)");
         const readSavedTheme = () => {
           try {
-            const value = localStorage.getItem(storageKey);
+            let value = localStorage.getItem(storageKey);
+            if (value !== "dark" && value !== "light") {
+              value = localStorage.getItem(legacyStorageKey);
+              if (value === "dark" || value === "light") localStorage.setItem(storageKey, value);
+            }
             return value === "dark" || value === "light" ? value : null;
           } catch {
             return null;
@@ -77,6 +82,12 @@
         document.documentElement.dataset.theme = readSavedTheme() || systemTheme();
         colourScheme.addEventListener("change", () => {
           if (!readSavedTheme()) document.documentElement.dataset.theme = systemTheme();
+        });
+        window.addEventListener("storage", (event) => {
+          if (event.key === storageKey && (event.newValue === "dark" || event.newValue === "light")) {
+            document.documentElement.dataset.theme = event.newValue;
+            window.dispatchEvent(new CustomEvent("elections:change", {detail: {source: "theme"}}));
+          }
         });
       })();
 
@@ -116,8 +127,11 @@
           const resourceLink = document.createElement("a");
           resourceLink.className = "oireachtas-masthead__resource";
           resourceLink.href = "https://bubcass.github.io/open-data-insights/";
-          resourceLink.textContent = "Open Data Insights";
           resourceLink.setAttribute("aria-label", "Open Data Insights home");
+          resourceLink.innerHTML = `
+            <span class="oireachtas-masthead__brand-mark" aria-hidden="true"><svg viewBox="0 0 64 28" focusable="false"><path d="M12 9H26L32 5L38 9H52"/><line x1="12" y1="10.5" x2="52" y2="10.5"/><rect x="12" y="10.5" width="40" height="13.5"/><line x1="27.5" y1="10.5" x2="27.5" y2="24"/><line x1="30" y1="10.5" x2="30" y2="24"/><line x1="34" y1="10.5" x2="34" y2="24"/><line x1="36.5" y1="10.5" x2="36.5" y2="24"/><line x1="26.5" y1="24" x2="37.5" y2="24"/><rect class="oireachtas-masthead__brand-mark-fill" x="30.7" y="18.2" width="2.6" height="5.8"/><path class="oireachtas-masthead__brand-mark-fill" d="M15 13h1.7v1.7H15zm4 0h1.7v1.7H19zm4 0h1.7v1.7H23zm16.3 0H41v1.7h-1.7zm4 0H45v1.7h-1.7zm4 0H49v1.7h-1.7zM15 18h1.7v1.7H15zm4 0h1.7v1.7H19zm4 0h1.7v1.7H23zm16.3 0H41v1.7h-1.7zm4 0H45v1.7h-1.7zm4 0H49v1.7h-1.7z"/><line x1="12" y1="24" x2="52" y2="24"/></svg></span>
+            <span class="oireachtas-masthead__brand-copy"><span class="oireachtas-masthead__brand-title">Open Data Insights</span><span class="oireachtas-masthead__brand-tagline">Parliamentary visual data</span></span>
+          `;
 
           const actions = document.createElement("div");
           actions.className = "oireachtas-masthead__actions";
@@ -258,7 +272,7 @@ registerFile("./data/seanad-members.json", {"name":"./data/seanad-members.json",
 registerFile("./media/seanad_election.jpg", {"name":"./media/seanad_election.jpg","mimeType":"image/jpeg","path":"../_file/seanad/media/seanad_election.3e3e4320.jpg","lastModified":1782500212298,"size":164043});
 
 define({id: "c0d80f9c", inputs: ["FileAttachment","ResizeObserver","parent","getComputedStyle","SVGElement"], outputs: ["d3","Plot","electionBarRace","panelSelect","renderTimelineControls","renderElectionSectionNav","enhanceHeroWithShare","format","heroImagePromise","normalisedPromise","finalRowsPromise","barRacePromise","seanadMembersPromise","subPanelColorMap","statusColorMap","getState","themeColour","chartPlaceholder","mountReactive","clean","canonicalPersonName","fixPlotAria","renderColorLegend","renderStatusLegend","renderSegmentedControl","getResults","getFinalRows","getSeanadMembers","getAvailablePanels","getCandidateOptions","ensureValidCandidateFocus","getCandidateRecord","getCandidateNarrative","ensureValidPanelSelection","getMemberPageUrl","getMemberImageUrl","getPanelSummary","getMatchedElectedMembers","getBarRacePanel","getCountRows","getActiveCountLabel","getWaffleRows","splitIntoTwoRows","renderQuotaWaffleChunk","getLollipopColorChoice","getLollipopRows","renderLollipopChart"], body: async (FileAttachment,ResizeObserver,parent,getComputedStyle,SVGElement) => {
-const [d3, Plot, {electionBarRace}, {panelSelect}, {renderTimelineControls}, {renderElectionSectionNav}, {enhanceHeroWithShare}] = await Promise.all([import("../_npm/d3@7.9.0/66d82917.js"), import("../_npm/@observablehq/plot@0.6.17/a96a6bbb.js"), import("../_import/seanad/electionBarRace.8b422c02.js"), import("../_import/seanad/panel-select.b0b557b9.js"), import("../_import/seanad/renderTimelineControls.f93c0bd3.js"), import("../_import/components/election-section-nav.263b35f7.js"), import("../_import/components/hero-share.0f8d6dd4.js")]);
+const [d3, Plot, {electionBarRace}, {panelSelect}, {renderTimelineControls}, {renderElectionSectionNav}, {enhanceHeroWithShare}] = await Promise.all([import("../_npm/d3@7.9.0/66d82917.js"), import("../_npm/@observablehq/plot@0.6.17/a96a6bbb.js"), import("../_import/seanad/electionBarRace.8b422c02.js"), import("../_import/seanad/panel-select.b0b557b9.js"), import("../_import/seanad/renderTimelineControls.f93c0bd3.js"), import("../_import/components/election-section-nav.263b35f7.js"), import("../_import/components/hero-share.0ed59f0f.js")]);
 
 const format = d3.format(",d");
 const heroImagePromise = FileAttachment("./media/seanad_election.jpg").url();
@@ -1052,18 +1066,6 @@ function renderLollipopChart(
 return {d3,Plot,electionBarRace,panelSelect,renderTimelineControls,renderElectionSectionNav,enhanceHeroWithShare,format,heroImagePromise,normalisedPromise,finalRowsPromise,barRacePromise,seanadMembersPromise,subPanelColorMap,statusColorMap,getState,themeColour,chartPlaceholder,mountReactive,clean,canonicalPersonName,fixPlotAria,renderColorLegend,renderStatusLegend,renderSegmentedControl,getResults,getFinalRows,getSeanadMembers,getAvailablePanels,getCandidateOptions,ensureValidCandidateFocus,getCandidateRecord,getCandidateNarrative,ensureValidPanelSelection,getMemberPageUrl,getMemberImageUrl,getPanelSummary,getMatchedElectedMembers,getBarRacePanel,getCountRows,getActiveCountLabel,getWaffleRows,splitIntoTwoRows,renderQuotaWaffleChunk,getLollipopColorChoice,getLollipopRows,renderLollipopChart};
 }});
 
-define({id: "74b63f3a", inputs: ["display","renderElectionSectionNav"], body: (display,renderElectionSectionNav) => {
-display(
-  renderElectionSectionNav({
-    currentSection: "seanad",
-    hrefs: {
-      dail: "../",
-      seanad: "./"
-    }
-  })
-);
-}});
-
 define({id: "32208bd2", inputs: ["display","mountReactive","heroImagePromise","enhanceHeroWithShare"], body: (display,mountReactive,heroImagePromise,enhanceHeroWithShare) => {
 display(
   mountReactive("hero", async (el, { skeletonOnly, isCurrent }) => {
@@ -1097,6 +1099,18 @@ display(
       title: "Election Explorer: 27th Seanad",
       text: "A data-driven exploration of the 2025 Seanad general election."
     });
+  })
+);
+}});
+
+define({id: "74b63f3a", inputs: ["display","renderElectionSectionNav"], body: (display,renderElectionSectionNav) => {
+display(
+  renderElectionSectionNav({
+    currentSection: "seanad",
+    hrefs: {
+      dail: "../",
+      seanad: "./"
+    }
   })
 );
 }});
@@ -1877,8 +1891,8 @@ display(
 <div id="observablehq-center">
 <main id="observablehq-main" class="observablehq">
 <div class="observablehq observablehq--block"><!--:c0d80f9c:--></div>
-<div class="observablehq observablehq--block"><!--:74b63f3a:--></div>
 <div class="observablehq observablehq--block"><!--:32208bd2:--></div>
+<div class="observablehq observablehq--block"><!--:74b63f3a:--></div>
 <div class="prose-block">
 <p>Election Explorer is part of our <strong><a href="https://bubcass.github.io/open-data-insights/" target="_self" rel="noopener noreferrer">Open Data Insights</a></strong> series.</p>
 <p>The 2025 Seanad election returned Senators across the vocational panels. Take a look at how the election unfolded by panel, count and candidate.</p>

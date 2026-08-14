@@ -24,7 +24,7 @@ const SUN_ICON = `
   </svg>
 `;
 
-const THEME_STORAGE_KEY = "election-explorer-theme";
+const THEME_STORAGE_KEY = "oireachtas-insights-theme";
 
 export function enhanceHeroWithShare(hero, {title, text} = {}) {
   const content = hero?.querySelector?.(".hero__content") || hero;
@@ -159,7 +159,7 @@ function currentTheme() {
 
 function updateThemeButton(button, theme) {
   const isDark = theme === "dark";
-  const label = isDark ? "Use light mode" : "Use dark mode";
+  const label = isDark ? "Use light mode across Insights" : "Use dark mode across Insights";
   button.setAttribute("aria-label", label);
   button.setAttribute("aria-pressed", String(isDark));
   button.title = label;

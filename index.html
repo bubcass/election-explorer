@@ -7,10 +7,10 @@
 <title>Dáil Éireann | Election Explorer | Houses of the Oireachtas</title>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&amp;display=swap" crossorigin>
-<link rel="preload" as="style" href="./_import/style.6aa93c30.css">
+<link rel="preload" as="style" href="./_import/style.110a4d5d.css">
 <link rel="preload" as="style" href="./_npm/leaflet@1.9.4/dist/leaflet.css">
 <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&amp;display=swap" crossorigin>
-<link rel="stylesheet" type="text/css" href="./_import/style.6aa93c30.css">
+<link rel="stylesheet" type="text/css" href="./_import/style.110a4d5d.css">
 <link rel="stylesheet" type="text/css" href="./_npm/leaflet@1.9.4/dist/leaflet.css">
 <link rel="modulepreload" href="./_observablehq/client.5cea8408.js">
 <link rel="modulepreload" href="./_observablehq/runtime.607a8173.js">
@@ -21,7 +21,7 @@
 <link rel="modulepreload" href="./_import/components/election-timeline-controls.2bc1e103.js">
 <link rel="modulepreload" href="./_import/components/electionBarRace.ad1ae1dd.js">
 <link rel="modulepreload" href="./_import/components/election-section-nav.263b35f7.js">
-<link rel="modulepreload" href="./_import/components/hero-share.0f8d6dd4.js">
+<link rel="modulepreload" href="./_import/components/hero-share.0ed59f0f.js">
 <link rel="modulepreload" href="./_import/components/constituency-location.b4402e47.js">
 <link rel="modulepreload" href="./_npm/leaflet@1.9.4/721623d8.js">
 <link rel="modulepreload" href="./_npm/d3-array@3.2.4/e93ca09f.js">
@@ -67,11 +67,16 @@
       document.documentElement.lang = "en-IE";
 
       (() => {
-        const storageKey = "election-explorer-theme";
+        const storageKey = "oireachtas-insights-theme";
+        const legacyStorageKey = "election-explorer-theme";
         const colourScheme = window.matchMedia("(prefers-color-scheme: dark)");
         const readSavedTheme = () => {
           try {
-            const value = localStorage.getItem(storageKey);
+            let value = localStorage.getItem(storageKey);
+            if (value !== "dark" && value !== "light") {
+              value = localStorage.getItem(legacyStorageKey);
+              if (value === "dark" || value === "light") localStorage.setItem(storageKey, value);
+            }
             return value === "dark" || value === "light" ? value : null;
           } catch {
             return null;
@@ -81,6 +86,12 @@
         document.documentElement.dataset.theme = readSavedTheme() || systemTheme();
         colourScheme.addEventListener("change", () => {
           if (!readSavedTheme()) document.documentElement.dataset.theme = systemTheme();
+        });
+        window.addEventListener("storage", (event) => {
+          if (event.key === storageKey && (event.newValue === "dark" || event.newValue === "light")) {
+            document.documentElement.dataset.theme = event.newValue;
+            window.dispatchEvent(new CustomEvent("elections:change", {detail: {source: "theme"}}));
+          }
         });
       })();
 
@@ -120,8 +131,11 @@
           const resourceLink = document.createElement("a");
           resourceLink.className = "oireachtas-masthead__resource";
           resourceLink.href = "https://bubcass.github.io/open-data-insights/";
-          resourceLink.textContent = "Open Data Insights";
           resourceLink.setAttribute("aria-label", "Open Data Insights home");
+          resourceLink.innerHTML = `
+            <span class="oireachtas-masthead__brand-mark" aria-hidden="true"><svg viewBox="0 0 64 28" focusable="false"><path d="M12 9H26L32 5L38 9H52"/><line x1="12" y1="10.5" x2="52" y2="10.5"/><rect x="12" y="10.5" width="40" height="13.5"/><line x1="27.5" y1="10.5" x2="27.5" y2="24"/><line x1="30" y1="10.5" x2="30" y2="24"/><line x1="34" y1="10.5" x2="34" y2="24"/><line x1="36.5" y1="10.5" x2="36.5" y2="24"/><line x1="26.5" y1="24" x2="37.5" y2="24"/><rect class="oireachtas-masthead__brand-mark-fill" x="30.7" y="18.2" width="2.6" height="5.8"/><path class="oireachtas-masthead__brand-mark-fill" d="M15 13h1.7v1.7H15zm4 0h1.7v1.7H19zm4 0h1.7v1.7H23zm16.3 0H41v1.7h-1.7zm4 0H45v1.7h-1.7zm4 0H49v1.7h-1.7zM15 18h1.7v1.7H15zm4 0h1.7v1.7H19zm4 0h1.7v1.7H23zm16.3 0H41v1.7h-1.7zm4 0H45v1.7h-1.7zm4 0H49v1.7h-1.7z"/><line x1="12" y1="24" x2="52" y2="24"/></svg></span>
+            <span class="oireachtas-masthead__brand-copy"><span class="oireachtas-masthead__brand-title">Open Data Insights</span><span class="oireachtas-masthead__brand-tagline">Parliamentary visual data</span></span>
+          `;
 
           const actions = document.createElement("div");
           actions.className = "oireachtas-masthead__actions";
@@ -264,7 +278,7 @@ registerFile("./data/members-lookup.json", {"name":"./data/members-lookup.json",
 registerFile("./media/election.mp4", {"name":"./media/election.mp4","mimeType":"video/mp4","path":"./_file/media/election.c68f2e1b.mp4","lastModified":1775503093166,"size":2601178});
 
 define({id: "b7eae235", inputs: ["FileAttachment","ResizeObserver","parent","getComputedStyle","SVGElement"], outputs: ["d3","Plot","constituencyMap","electionTimelineControls","electionBarRace","renderElectionSectionNav","enhanceHeroWithShare","detectConstituencyFromLocation","ensureLeafletCss","format","heroVideoPromise","normalisedPromise","finalRowsPromise","barRacePromise","constituenciesGeoPromise","membersLookupPromise","downloadHrefPromise","partyColorMap","getState","themeColour","chartPlaceholder","mountReactive","clean","cleanConstituencyName","canonicalPersonName","getDisplayNameFromElection","fixPlotAria","getColorChoices","renderColorLegend","renderStatusLegend","getResults","getFinalRows","getBarRaceConstituency","getConstituenciesGeo","getMembersLookup","getMembersArray","getFilteredConstituencyGeo","getAvailableConstituencies","getConstituencySummary","getMatchedElectedMembers","getCountRows","getActiveCountLabel","getWaffleRows","splitIntoTwoRows","renderQuotaWaffleChunk","renderConstituencySelect","renderSegmentedControl","getCandidateOptions","ensureValidCandidateFocus","getCandidateRecord","getCandidateNarrative"], body: async (FileAttachment,ResizeObserver,parent,getComputedStyle,SVGElement) => {
-const [d3, Plot, {constituencyMap}, {electionTimelineControls}, {electionBarRace}, {renderElectionSectionNav}, {enhanceHeroWithShare}, {detectConstituencyFromLocation}] = await Promise.all([import("./_npm/d3@7.9.0/66d82917.js"), import("./_npm/@observablehq/plot@0.6.17/a96a6bbb.js"), import("./_import/components/constituency-map.c6a7a042.js"), import("./_import/components/election-timeline-controls.2bc1e103.js"), import("./_import/components/electionBarRace.ad1ae1dd.js"), import("./_import/components/election-section-nav.263b35f7.js"), import("./_import/components/hero-share.0f8d6dd4.js"), import("./_import/components/constituency-location.b4402e47.js")]);
+const [d3, Plot, {constituencyMap}, {electionTimelineControls}, {electionBarRace}, {renderElectionSectionNav}, {enhanceHeroWithShare}, {detectConstituencyFromLocation}] = await Promise.all([import("./_npm/d3@7.9.0/66d82917.js"), import("./_npm/@observablehq/plot@0.6.17/a96a6bbb.js"), import("./_import/components/constituency-map.c6a7a042.js"), import("./_import/components/election-timeline-controls.2bc1e103.js"), import("./_import/components/electionBarRace.ad1ae1dd.js"), import("./_import/components/election-section-nav.263b35f7.js"), import("./_import/components/hero-share.0ed59f0f.js"), import("./_import/components/constituency-location.b4402e47.js")]);
 
 async function ensureLeafletCss() {
   if (typeof document === "undefined") return;
@@ -1084,18 +1098,6 @@ async function getCandidateNarrative() {
 return {d3,Plot,constituencyMap,electionTimelineControls,electionBarRace,renderElectionSectionNav,enhanceHeroWithShare,detectConstituencyFromLocation,ensureLeafletCss,format,heroVideoPromise,normalisedPromise,finalRowsPromise,barRacePromise,constituenciesGeoPromise,membersLookupPromise,downloadHrefPromise,partyColorMap,getState,themeColour,chartPlaceholder,mountReactive,clean,cleanConstituencyName,canonicalPersonName,getDisplayNameFromElection,fixPlotAria,getColorChoices,renderColorLegend,renderStatusLegend,getResults,getFinalRows,getBarRaceConstituency,getConstituenciesGeo,getMembersLookup,getMembersArray,getFilteredConstituencyGeo,getAvailableConstituencies,getConstituencySummary,getMatchedElectedMembers,getCountRows,getActiveCountLabel,getWaffleRows,splitIntoTwoRows,renderQuotaWaffleChunk,renderConstituencySelect,renderSegmentedControl,getCandidateOptions,ensureValidCandidateFocus,getCandidateRecord,getCandidateNarrative};
 }});
 
-define({id: "c56313d9", inputs: ["display","renderElectionSectionNav"], body: (display,renderElectionSectionNav) => {
-display(
-  renderElectionSectionNav({
-    currentSection: "dail",
-    hrefs: {
-      dail: "./",
-      seanad: "./seanad/"
-    }
-  })
-);
-}});
-
 define({id: "643db940", inputs: ["display","mountReactive","heroVideoPromise","enhanceHeroWithShare"], body: (display,mountReactive,heroVideoPromise,enhanceHeroWithShare) => {
 display(
   mountReactive("hero", async (el, { skeletonOnly, isCurrent }) => {
@@ -1132,6 +1134,18 @@ display(
       title: "Election Explorer: 34th Dáil",
       text: "A data-driven exploration of the 2024 general election."
     });
+  })
+);
+}});
+
+define({id: "c56313d9", inputs: ["display","renderElectionSectionNav"], body: (display,renderElectionSectionNav) => {
+display(
+  renderElectionSectionNav({
+    currentSection: "dail",
+    hrefs: {
+      dail: "./",
+      seanad: "./seanad/"
+    }
   })
 );
 }});
@@ -2004,8 +2018,8 @@ display(
 <div id="observablehq-center">
 <main id="observablehq-main" class="observablehq">
 <div class="observablehq observablehq--block"><!--:b7eae235:--></div>
-<div class="observablehq observablehq--block"><!--:c56313d9:--></div>
 <div class="observablehq observablehq--block"><!--:643db940:--></div>
+<div class="observablehq observablehq--block"><!--:c56313d9:--></div>
 <div class="prose-block">
 <p>Election Explorer is part of our <strong><a href="https://bubcass.github.io/open-data-insights/" target="_self" rel="noopener noreferrer">Open Data Insights</a></strong> series.</p>
 <p>The latest election of TDs took place in November 2024 and 174 Members were returned from 43 constituencies. Take a look at how it unfolded by constituency,  count and candidate.</p>
