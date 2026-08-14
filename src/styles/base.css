@@ -51,7 +51,11 @@ body {
     line-height: 1.6;
 }
 
-main.observablehq {
+#observablehq-center {
+    margin-top: 0;
+}
+
+#observablehq-main.observablehq {
     max-width: var(--page-max);
     margin: 0 auto;
     padding: var(--space-5) var(--space-5) var(--space-7);
@@ -372,7 +376,7 @@ a:focus-visible {
         font-size: 0.95rem;
     }
 
-    main.observablehq {
+    #observablehq-main.observablehq {
         padding: var(--space-4) var(--space-4) var(--space-6);
     }
 

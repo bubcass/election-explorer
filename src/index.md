@@ -835,18 +835,6 @@ async function getCandidateNarrative() {
 
 ```js
 display(
-  renderElectionSectionNav({
-    currentSection: "dail",
-    hrefs: {
-      dail: "./",
-      seanad: "./seanad/"
-    }
-  })
-);
-```
-
-```js
-display(
   mountReactive("hero", async (el, { skeletonOnly, isCurrent }) => {
     if (skeletonOnly) {
       el.innerHTML = `<div class="hero__media skeleton-shimmer"></div>`;
@@ -881,6 +869,18 @@ display(
       title: "Election Explorer: 34th Dáil",
       text: "A data-driven exploration of the 2024 general election."
     });
+  })
+);
+```
+
+```js
+display(
+  renderElectionSectionNav({
+    currentSection: "dail",
+    hrefs: {
+      dail: "./",
+      seanad: "./seanad/"
+    }
   })
 );
 ```

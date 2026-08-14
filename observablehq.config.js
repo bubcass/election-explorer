@@ -7,11 +7,16 @@ export default {
       document.documentElement.lang = "en-IE";
 
       (() => {
-        const storageKey = "election-explorer-theme";
+        const storageKey = "oireachtas-insights-theme";
+        const legacyStorageKey = "election-explorer-theme";
         const colourScheme = window.matchMedia("(prefers-color-scheme: dark)");
         const readSavedTheme = () => {
           try {
-            const value = localStorage.getItem(storageKey);
+            let value = localStorage.getItem(storageKey);
+            if (value !== "dark" && value !== "light") {
+              value = localStorage.getItem(legacyStorageKey);
+              if (value === "dark" || value === "light") localStorage.setItem(storageKey, value);
+            }
             return value === "dark" || value === "light" ? value : null;
           } catch {
             return null;
@@ -21,6 +26,12 @@ export default {
         document.documentElement.dataset.theme = readSavedTheme() || systemTheme();
         colourScheme.addEventListener("change", () => {
           if (!readSavedTheme()) document.documentElement.dataset.theme = systemTheme();
+        });
+        window.addEventListener("storage", (event) => {
+          if (event.key === storageKey && (event.newValue === "dark" || event.newValue === "light")) {
+            document.documentElement.dataset.theme = event.newValue;
+            window.dispatchEvent(new CustomEvent("elections:change", {detail: {source: "theme"}}));
+          }
         });
       })();
 
@@ -60,8 +71,11 @@ export default {
           const resourceLink = document.createElement("a");
           resourceLink.className = "oireachtas-masthead__resource";
           resourceLink.href = "https://bubcass.github.io/open-data-insights/";
-          resourceLink.textContent = "Open Data Insights";
           resourceLink.setAttribute("aria-label", "Open Data Insights home");
+          resourceLink.innerHTML = \`
+            <span class="oireachtas-masthead__brand-mark" aria-hidden="true"><svg viewBox="0 0 64 28" focusable="false"><path d="M12 9H26L32 5L38 9H52"/><line x1="12" y1="10.5" x2="52" y2="10.5"/><rect x="12" y="10.5" width="40" height="13.5"/><line x1="27.5" y1="10.5" x2="27.5" y2="24"/><line x1="30" y1="10.5" x2="30" y2="24"/><line x1="34" y1="10.5" x2="34" y2="24"/><line x1="36.5" y1="10.5" x2="36.5" y2="24"/><line x1="26.5" y1="24" x2="37.5" y2="24"/><rect class="oireachtas-masthead__brand-mark-fill" x="30.7" y="18.2" width="2.6" height="5.8"/><path class="oireachtas-masthead__brand-mark-fill" d="M15 13h1.7v1.7H15zm4 0h1.7v1.7H19zm4 0h1.7v1.7H23zm16.3 0H41v1.7h-1.7zm4 0H45v1.7h-1.7zm4 0H49v1.7h-1.7zM15 18h1.7v1.7H15zm4 0h1.7v1.7H19zm4 0h1.7v1.7H23zm16.3 0H41v1.7h-1.7zm4 0H45v1.7h-1.7zm4 0H49v1.7h-1.7z"/><line x1="12" y1="24" x2="52" y2="24"/></svg></span>
+            <span class="oireachtas-masthead__brand-copy"><span class="oireachtas-masthead__brand-title">Open Data Insights</span><span class="oireachtas-masthead__brand-tagline">Parliamentary visual data</span></span>
+          \`;
 
           const actions = document.createElement("div");
           actions.className = "oireachtas-masthead__actions";

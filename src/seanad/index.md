@@ -808,18 +808,6 @@ function renderLollipopChart(
 
 ```js
 display(
-  renderElectionSectionNav({
-    currentSection: "seanad",
-    hrefs: {
-      dail: "../",
-      seanad: "./"
-    }
-  })
-);
-```
-
-```js
-display(
   mountReactive("hero", async (el, { skeletonOnly, isCurrent }) => {
     if (skeletonOnly) {
       el.innerHTML = `<div class="hero__media skeleton-shimmer"></div>`;
@@ -851,6 +839,18 @@ display(
       title: "Election Explorer: 27th Seanad",
       text: "A data-driven exploration of the 2025 Seanad general election."
     });
+  })
+);
+```
+
+```js
+display(
+  renderElectionSectionNav({
+    currentSection: "seanad",
+    hrefs: {
+      dail: "../",
+      seanad: "./"
+    }
   })
 );
 ```
