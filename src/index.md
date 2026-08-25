@@ -7,59 +7,14 @@ toc: false
 ---
 
 ```js
-import * as d3 from "npm:d3";
-import * as Plot from "npm:@observablehq/plot";
+import * as d3 from "npm:d3@7.9.0";
+import * as Plot from "npm:@observablehq/plot@0.6.17";
 import { constituencyMap } from "./components/constituency-map.js";
 import { electionTimelineControls } from "./components/election-timeline-controls.js";
 import { electionBarRace } from "./components/electionBarRace.js";
 import { renderElectionSectionNav } from "./components/election-section-nav.js";
 import { enhanceHeroWithShare } from "./components/hero-share.js";
 import { detectConstituencyFromLocation } from "./components/constituency-location.js";
-
-async function ensureLeafletCss() {
-  if (typeof document === "undefined") return;
-
-  const existing = document.getElementById("leaflet-css-cdn");
-  if (existing) {
-    if (existing.dataset.loaded === "true") return;
-
-    await new Promise((resolve, reject) => {
-      existing.addEventListener(
-        "load",
-        () => {
-          existing.dataset.loaded = "true";
-          resolve();
-        },
-        { once: true }
-      );
-      existing.addEventListener("error", reject, { once: true });
-    });
-
-    return;
-  }
-
-  await new Promise((resolve, reject) => {
-    const link = document.createElement("link");
-    link.id = "leaflet-css-cdn";
-    link.rel = "stylesheet";
-    link.href = "https://unpkg.com/leaflet@1.9.4/dist/leaflet.css";
-
-    link.addEventListener(
-      "load",
-      () => {
-        link.dataset.loaded = "true";
-        resolve();
-      },
-      { once: true }
-    );
-
-    link.addEventListener("error", reject, { once: true });
-
-    document.head.appendChild(link);
-  });
-}
-
-ensureLeafletCss();
 
 const format = d3.format(",d");
 const heroVideoPromise = FileAttachment("media/election.mp4").url();

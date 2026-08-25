@@ -1,4 +1,4 @@
-import * as d3 from "npm:d3";
+import * as d3 from "npm:d3@7.9.0";
 
 const DEFAULT_PARTY_COLORS = new Map([
   ["Fianna Fáil", "#2c8737"],
