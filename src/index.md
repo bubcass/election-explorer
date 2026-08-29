@@ -20,11 +20,11 @@ const format = d3.format(",d");
 const heroVideoPromise = FileAttachment("media/election.mp4").url();
 
 const normalisedPromise = FileAttachment(
-  "data/derived/election-2024-normalised.json"
+  "data/derived/election-results-normalised.json"
 ).json();
 
 const finalRowsPromise = FileAttachment(
-  "data/derived/election-2024-final-rows.json"
+  "data/derived/election-results-final-rows.json"
 ).json();
 
 const barRacePromise = FileAttachment(
@@ -40,7 +40,7 @@ const membersLookupPromise = FileAttachment(
 ).json();
 
 const downloadHrefPromise = FileAttachment(
-  "data/election_2024_cleaned.csv"
+  "data/election_results.csv"
 ).url();
 
 const partyColorMap = new Map([
@@ -69,6 +69,7 @@ if (typeof window !== "undefined" && !window.__electionsResizeObserver) {
 
 if (!window.electionsState) {
   window.electionsState = {
+    election: "2024-general-election",
     constituency: "Carlow-Kilkenny",
     count: null,
     colorMode: "party",
@@ -293,20 +294,27 @@ function renderStatusLegend() {
   });
 }
 
-async function getResults() {
+async function getAllResults() {
   const payload = await normalisedPromise;
   return payload.data ?? [];
 }
 
+async function getResults() {
+  const rows = await getAllResults();
+  return rows.filter((d) => d.election === getState().election);
+}
+
 async function getFinalRows() {
   const payload = await finalRowsPromise;
-  return payload.data ?? [];
+  return (payload.data ?? []).filter((d) => d.election === getState().election);
 }
 
 async function getBarRaceConstituency() {
   const data = await barRacePromise;
-  const { constituency } = getState();
-  return data.find((d) => d.constituency === constituency) ?? null;
+  const { election, constituency } = getState();
+  return data.find(
+    (d) => d.election === election && d.constituency === constituency
+  ) ?? null;
 }
 
 async function getConstituenciesGeo() {
@@ -336,9 +344,29 @@ async function getFilteredConstituencyGeo() {
 }
 
 async function getAvailableConstituencies() {
-  const rows = await getResults();
+  const rows = await getAllResults();
   return Array.from(new Set(rows.map((d) => d.constituency).filter(Boolean))).sort(
     (a, b) => a.localeCompare(b, "en")
+  );
+}
+
+async function getAvailableContests(constituency = getState().constituency) {
+  const rows = await getAllResults();
+  return Array.from(
+    new Map(
+      rows.filter((d) => d.constituency === constituency).map((d) => [
+        d.election,
+        {
+          id: d.election,
+          label: d.electionLabel,
+          date: d.electionDate,
+          type: d.electionType
+        }
+      ])
+    ).values()
+  ).sort((a, b) =>
+    d3.descending(a.type === "general election", b.type === "general election") ||
+    d3.descending(a.date, b.date)
   );
 }
 
@@ -357,6 +385,9 @@ async function getConstituencySummary() {
     .sort((a, b) => d3.descending(a.votes, b.votes));
 
   return {
+    election: filtered[0].election,
+    electionLabel: filtered[0].electionLabel,
+    electionType: filtered[0].electionType,
     constituency,
     quota: filtered[0].quota,
     seats: filtered[0].seats,
@@ -632,8 +663,12 @@ function renderConstituencySelect(options, selectedValue) {
   const locateButton = wrap.querySelector(".constituency-location-action");
   const locateStatus = wrap.querySelector(".constituency-location-status");
 
-  function selectConstituency(constituency) {
+  async function selectConstituency(constituency) {
     window.electionsState.constituency = constituency;
+    const contests = await getAvailableContests(constituency);
+    if (!contests.some((contest) => contest.id === window.electionsState.election)) {
+      window.electionsState.election = contests[0]?.id ?? null;
+    }
     window.electionsState.count = null;
     window.electionsState.candidateFocus = null;
     window.dispatchEvent(new CustomEvent("elections:change"));
@@ -667,6 +702,30 @@ function renderConstituencySelect(options, selectedValue) {
       locateButton.disabled = false;
       locateButton.textContent = "Use my location";
     }
+  });
+
+  return wrap;
+}
+
+function renderContestSelect(options, selectedValue) {
+  const wrap = document.createElement("div");
+  wrap.className = "election-contest-context";
+  wrap.innerHTML = `
+      <label for="election-contest-select">Contest</label>
+      <select id="election-contest-select">
+        ${options.map((option) => `
+          <option value="${option.id}" ${option.id === selectedValue ? "selected" : ""}>
+            ${option.label}
+          </option>
+        `).join("")}
+      </select>
+  `;
+
+  wrap.querySelector("select")?.addEventListener("change", async (event) => {
+    window.electionsState.election = event.target.value;
+    window.electionsState.count = null;
+    window.electionsState.candidateFocus = null;
+    window.dispatchEvent(new CustomEvent("elections:change"));
   });
 
   return wrap;
@@ -815,14 +874,14 @@ display(
           <p class="hero__eyebrow">Open data insights</p>
           <h1 class="hero__title">Election Explorer: 34th Dáil</h1>
           <p class="hero__subtitle">
-            A data-driven exploration of the 2024 general election.
+            A data-driven exploration of Dáil election results.
           </p>
         </div>
       </div>
     `;
     enhanceHeroWithShare(el, {
       title: "Election Explorer: 34th Dáil",
-      text: "A data-driven exploration of the 2024 general election."
+      text: "A data-driven exploration of Dáil election results."
     });
   })
 );
@@ -843,7 +902,7 @@ display(
 <div class="prose-block">
 
 <p>Election Explorer is part of our <strong><a href="https://bubcass.github.io/open-data-insights/" target="_self">Open Data Insights</a></strong> series.</p>
-<p>The latest election of TDs took place in November 2024 and 174 Members were returned from 43 constituencies. Take a look at how it unfolded by constituency,  count and candidate.</p>
+<p>Explore the 2024 general election and subsequent Dáil by-elections by constituency, count and candidate.</p>
 
 </div>
 
@@ -879,7 +938,8 @@ display(
       return;
     }
 
-    const [options, summary, geo, members] = await Promise.all([
+    const [contests, options, summary, geo, members] = await Promise.all([
+      getAvailableContests(),
       getAvailableConstituencies(),
       getConstituencySummary(),
       getFilteredConstituencyGeo(),
@@ -909,6 +969,9 @@ display(
     cardsWrap.className = "constituency-top__cards";
 
     info.appendChild(renderConstituencySelect(options, getState().constituency));
+    if (contests.length > 1) {
+      info.appendChild(renderContestSelect(contests, getState().election));
+    }
 
     const summaryBlock = document.createElement("div");
     summaryBlock.className = "constituency-top__summary";
@@ -917,7 +980,7 @@ display(
       <h2>Elected Members</h2>
       <p>
         <strong>${summary.constituency}</strong> returned <strong>${summary.seats}</strong>
-        Members to the 34th Dáil.
+        ${summary.seats === 1 ? "Member" : "Members"} in the <strong>${summary.electionLabel}</strong>.
       </p>
       <p>
         A total of <strong>${summary.totalCandidates}</strong> candidates contested the constituency.
@@ -931,11 +994,15 @@ display(
     info.appendChild(summaryBlock);
 
     if (geo?.features?.length) {
+      const popupSuffix = summary.electionType === "by-election"
+        ? " in this by-election"
+        : "";
+
       mapWrap.appendChild(
         constituencyMap(geo, {
           height: 360,
           popupFormatter: () =>
-            `The <strong>${summary.constituency}</strong> constituency returned <strong>${summary.seats} Members</strong>.`
+            `The <strong>${summary.constituency}</strong> constituency returned <strong>${summary.seats} ${summary.seats === 1 ? "Member" : "Members"}</strong>${popupSuffix}.`
         })
       );
     } else {
@@ -1040,7 +1107,7 @@ display(
 
 <div class="prose-block">
   <h2>Explore the election as it happened</h2>
-  <p>Take an interactive look at how the general election unfolded in November 2024 and the story of each count.</p>
+  <p>Take an interactive look at how the selected election unfolded and the story of each count.</p>
 </div>
 
 <div class="section-driver-block">
@@ -1049,8 +1116,9 @@ display(
 ```js
 electionTimelineControls({
   state: window.electionsState,
-  resultsPromise: getResults(),
+  resultsPromise: getAllResults(),
   getConstituency: () => getState().constituency,
+  getElection: () => getState().election,
   onChange: () => {
     window.dispatchEvent(new CustomEvent("elections:change"));
   }
@@ -1712,7 +1780,7 @@ display(
     }
 
     const rows = await getResults();
-    const { constituency } = getState();
+    const { constituency, election } = getState();
     if (!isCurrent()) return;
 
     const filteredRows = rows.filter((d) => d.constituency === constituency);
@@ -1745,7 +1813,7 @@ display(
     const link = document.createElement("a");
     link.className = "pq-download";
     link.href = url;
-    link.download = `${constituency.toLowerCase().replace(/\s+/g, "-")}-election-results-2024.csv`;
+    link.download = `${constituency.toLowerCase().replace(/\s+/g, "-")}-${election}-results.csv`;
     link.textContent = `Download full count-by-count dataset for ${constituency}`;
 
     el.replaceChildren(link);

@@ -1,5 +1,8 @@
 [
   {
+    "election": "2024-general-election",
+    "electionLabel": "2024 general election",
+    "electionDate": "2024-11-29",
     "constituency": "Carlow-Kilkenny",
     "quota": 11627,
     "seats": 5,
@@ -1215,6 +1218,9 @@
     ]
   },
   {
+    "election": "2024-general-election",
+    "electionLabel": "2024 general election",
+    "electionDate": "2024-11-29",
     "constituency": "Cavan-Monaghan",
     "quota": 11542,
     "seats": 5,
@@ -2292,6 +2298,9 @@
     ]
   },
   {
+    "election": "2024-general-election",
+    "electionLabel": "2024 general election",
+    "electionDate": "2024-11-29",
     "constituency": "Clare",
     "quota": 12182,
     "seats": 4,
@@ -3507,6 +3516,9 @@
     ]
   },
   {
+    "election": "2024-general-election",
+    "electionLabel": "2024 general election",
+    "electionDate": "2024-11-29",
     "constituency": "Cork East",
     "quota": 9602,
     "seats": 4,
@@ -4364,6 +4376,9 @@
     ]
   },
   {
+    "election": "2024-general-election",
+    "electionLabel": "2024 general election",
+    "electionDate": "2024-11-29",
     "constituency": "Cork North-Central",
     "quota": 9846,
     "seats": 5,
@@ -5704,6 +5719,9 @@
     ]
   },
   {
+    "election": "2024-general-election",
+    "electionLabel": "2024 general election",
+    "electionDate": "2024-11-29",
     "constituency": "Cork North-West",
     "quota": 10712,
     "seats": 3,
@@ -6022,6 +6040,9 @@
     ]
   },
   {
+    "election": "2024-general-election",
+    "electionLabel": "2024 general election",
+    "electionDate": "2024-11-29",
     "constituency": "Cork South-Central",
     "quota": 10451,
     "seats": 5,
@@ -7493,6 +7514,9 @@
     ]
   },
   {
+    "election": "2024-general-election",
+    "electionLabel": "2024 general election",
+    "electionDate": "2024-11-29",
     "constituency": "Cork South-West",
     "quota": 11824,
     "seats": 3,
@@ -8135,6 +8159,9 @@
     ]
   },
   {
+    "election": "2024-general-election",
+    "electionLabel": "2024 general election",
+    "electionDate": "2024-11-29",
     "constituency": "Donegal",
     "quota": 12771,
     "seats": 5,
@@ -9350,6 +9377,9 @@
     ]
   },
   {
+    "election": "2024-general-election",
+    "electionLabel": "2024 general election",
+    "electionDate": "2024-11-29",
     "constituency": "Dublin Bay North",
     "quota": 10929,
     "seats": 5,
@@ -10427,6 +10457,9 @@
     ]
   },
   {
+    "election": "2024-general-election",
+    "electionLabel": "2024 general election",
+    "electionDate": "2024-11-29",
     "constituency": "Dublin Bay South",
     "quota": 7957,
     "seats": 4,
@@ -11243,6 +11276,9 @@
     ]
   },
   {
+    "election": "2024-general-election",
+    "electionLabel": "2024 general election",
+    "electionDate": "2024-11-29",
     "constituency": "Dublin Central",
     "quota": 6551,
     "seats": 4,
@@ -11847,6 +11883,9 @@
     ]
   },
   {
+    "election": "2024-general-election",
+    "electionLabel": "2024 general election",
+    "electionDate": "2024-11-29",
     "constituency": "Dublin Fingal East",
     "quota": 9475,
     "seats": 3,
@@ -12527,6 +12566,9 @@
     ]
   },
   {
+    "election": "2024-general-election",
+    "electionLabel": "2024 general election",
+    "electionDate": "2024-11-29",
     "constituency": "Dublin Fingal West",
     "quota": 7530,
     "seats": 3,
@@ -12868,6 +12910,9 @@
     ]
   },
   {
+    "election": "2024-general-election",
+    "electionLabel": "2024 general election",
+    "electionDate": "2024-11-29",
     "constituency": "Dublin Mid-West",
     "quota": 7913,
     "seats": 5,
@@ -13744,6 +13789,9 @@
     ]
   },
   {
+    "election": "2024-general-election",
+    "electionLabel": "2024 general election",
+    "electionDate": "2024-11-29",
     "constituency": "Dublin North-West",
     "quota": 8184,
     "seats": 3,
@@ -14252,6 +14300,9 @@
     ]
   },
   {
+    "election": "2024-general-election",
+    "electionLabel": "2024 general election",
+    "electionDate": "2024-11-29",
     "constituency": "Dublin Rathdown",
     "quota": 9752,
     "seats": 4,
@@ -14878,6 +14929,9 @@
     ]
   },
   {
+    "election": "2024-general-election",
+    "electionLabel": "2024 general election",
+    "electionDate": "2024-11-29",
     "constituency": "Dublin South-Central",
     "quota": 7469,
     "seats": 4,
@@ -15924,6 +15978,9 @@
     ]
   },
   {
+    "election": "2024-general-election",
+    "electionLabel": "2024 general election",
+    "electionDate": "2024-11-29",
     "constituency": "Dublin South-West",
     "quota": 11138,
     "seats": 5,
@@ -16642,6 +16699,9 @@
     ]
   },
   {
+    "election": "2024-general-election",
+    "electionLabel": "2024 general election",
+    "electionDate": "2024-11-29",
     "constituency": "Dublin West",
     "quota": 7373,
     "seats": 5,
@@ -17474,6 +17534,9 @@
     ]
   },
   {
+    "election": "2024-general-election",
+    "electionLabel": "2024 general election",
+    "electionDate": "2024-11-29",
     "constituency": "Dún Laoghaire",
     "quota": 11134,
     "seats": 4,
@@ -17834,6 +17897,9 @@
     ]
   },
   {
+    "election": "2024-general-election",
+    "electionLabel": "2024 general election",
+    "electionDate": "2024-11-29",
     "constituency": "Galway East",
     "quota": 10843,
     "seats": 4,
@@ -18476,6 +18542,9 @@
     ]
   },
   {
+    "election": "2024-general-election",
+    "electionLabel": "2024 general election",
+    "electionDate": "2024-11-29",
     "constituency": "Galway West",
     "quota": 10047,
     "seats": 5,
@@ -19532,6 +19601,9 @@
     ]
   },
   {
+    "election": "2024-general-election",
+    "electionLabel": "2024 general election",
+    "electionDate": "2024-11-29",
     "constituency": "Kerry",
     "quota": 13083,
     "seats": 5,
@@ -20408,6 +20480,9 @@
     ]
   },
   {
+    "election": "2024-general-election",
+    "electionLabel": "2024 general election",
+    "electionDate": "2024-11-29",
     "constituency": "Kildare North",
     "quota": 9505,
     "seats": 5,
@@ -21183,6 +21258,9 @@
     ]
   },
   {
+    "election": "2024-general-election",
+    "electionLabel": "2024 general election",
+    "electionDate": "2024-11-29",
     "constituency": "Kildare South",
     "quota": 10734,
     "seats": 3,
@@ -21917,6 +21995,9 @@
     ]
   },
   {
+    "election": "2024-general-election",
+    "electionLabel": "2024 general election",
+    "electionDate": "2024-11-29",
     "constituency": "Laois",
     "quota": 9570,
     "seats": 3,
@@ -22348,6 +22429,9 @@
     ]
   },
   {
+    "election": "2024-general-election",
+    "electionLabel": "2024 general election",
+    "electionDate": "2024-11-29",
     "constituency": "Limerick City",
     "quota": 8435,
     "seats": 4,
@@ -23344,6 +23428,9 @@
     ]
   },
   {
+    "election": "2024-general-election",
+    "electionLabel": "2024 general election",
+    "electionDate": "2024-11-29",
     "constituency": "Limerick County",
     "quota": 11385,
     "seats": 3,
@@ -24132,6 +24219,9 @@
     ]
   },
   {
+    "election": "2024-general-election",
+    "electionLabel": "2024 general election",
+    "electionDate": "2024-11-29",
     "constituency": "Longford-Westmeath",
     "quota": 10315,
     "seats": 5,
@@ -25278,6 +25368,9 @@
     ]
   },
   {
+    "election": "2024-general-election",
+    "electionLabel": "2024 general election",
+    "electionDate": "2024-11-29",
     "constituency": "Louth",
     "quota": 10623,
     "seats": 5,
@@ -27029,6 +27122,9 @@
     ]
   },
   {
+    "election": "2024-general-election",
+    "electionLabel": "2024 general election",
+    "electionDate": "2024-11-29",
     "constituency": "Mayo",
     "quota": 11812,
     "seats": 5,
@@ -27747,6 +27843,9 @@
     ]
   },
   {
+    "election": "2024-general-election",
+    "electionLabel": "2024 general election",
+    "electionDate": "2024-11-29",
     "constituency": "Meath East",
     "quota": 9997,
     "seats": 4,
@@ -28667,6 +28766,9 @@
     ]
   },
   {
+    "election": "2024-general-election",
+    "electionLabel": "2024 general election",
+    "electionDate": "2024-11-29",
     "constituency": "Meath West",
     "quota": 9427,
     "seats": 3,
@@ -28963,6 +29065,9 @@
     ]
   },
   {
+    "election": "2024-general-election",
+    "electionLabel": "2024 general election",
+    "electionDate": "2024-11-29",
     "constituency": "Offaly",
     "quota": 9347,
     "seats": 3,
@@ -29323,6 +29428,9 @@
     ]
   },
   {
+    "election": "2024-general-election",
+    "electionLabel": "2024 general election",
+    "electionDate": "2024-11-29",
     "constituency": "Roscommon-Galway",
     "quota": 10283,
     "seats": 3,
@@ -29683,6 +29791,9 @@
     ]
   },
   {
+    "election": "2024-general-election",
+    "electionLabel": "2024 general election",
+    "electionDate": "2024-11-29",
     "constituency": "Sligo-Leitrim",
     "quota": 11381,
     "seats": 4,
@@ -30603,6 +30714,9 @@
     ]
   },
   {
+    "election": "2024-general-election",
+    "electionLabel": "2024 general election",
+    "electionDate": "2024-11-29",
     "constituency": "Tipperary North",
     "quota": 11442,
     "seats": 3,
@@ -31194,6 +31308,9 @@
     ]
   },
   {
+    "election": "2024-general-election",
+    "electionLabel": "2024 general election",
+    "electionDate": "2024-11-29",
     "constituency": "Tipperary South",
     "quota": 10270,
     "seats": 3,
@@ -31535,6 +31652,9 @@
     ]
   },
   {
+    "election": "2024-general-election",
+    "electionLabel": "2024 general election",
+    "electionDate": "2024-11-29",
     "constituency": "Waterford",
     "quota": 10731,
     "seats": 4,
@@ -32269,6 +32389,9 @@
     ]
   },
   {
+    "election": "2024-general-election",
+    "electionLabel": "2024 general election",
+    "electionDate": "2024-11-29",
     "constituency": "Wexford",
     "quota": 10502,
     "seats": 4,
@@ -32949,6 +33072,9 @@
     ]
   },
   {
+    "election": "2024-general-election",
+    "electionLabel": "2024 general election",
+    "electionDate": "2024-11-29",
     "constituency": "Wicklow",
     "quota": 11415,
     "seats": 4,
@@ -33869,6 +33995,9 @@
     ]
   },
   {
+    "election": "2024-general-election",
+    "electionLabel": "2024 general election",
+    "electionDate": "2024-11-29",
     "constituency": "Wicklow-Wexford",
     "quota": 9560,
     "seats": 3,
@@ -34159,6 +34288,1308 @@
           "O'Keeffe, Aislinn": "Eliminated",
           "O Súilleabháin, Fionntán": "Elected",
           "Walsh, Ann": "Eliminated"
+        }
+      }
+    ]
+  },
+  {
+    "election": "2026-dublin-central-byelection",
+    "electionLabel": "2026 Dublin Central by-election",
+    "electionDate": "2026-05-22",
+    "constituency": "Dublin Central",
+    "quota": 12435,
+    "seats": 1,
+    "maxValue": 12050,
+    "maxCount": 9,
+    "candidates": [
+      {
+        "name": "Boylan, Janice",
+        "party": "Sinn Féin",
+        "gender": "F"
+      },
+      {
+        "name": "Corrigan, Tony",
+        "party": "Non-party",
+        "gender": "M"
+      },
+      {
+        "name": "Ennis, Daniel",
+        "party": "Social Democrats",
+        "gender": "M"
+      },
+      {
+        "name": "Flood, Colm Joseph",
+        "party": "Non-party",
+        "gender": "M"
+      },
+      {
+        "name": "Flynn, Mannix",
+        "party": "Non-party",
+        "gender": "M"
+      },
+      {
+        "name": "Horner, Janet",
+        "party": "Green Party",
+        "gender": "F"
+      },
+      {
+        "name": "Hutch, Gerard",
+        "party": "Non-party",
+        "gender": "M"
+      },
+      {
+        "name": "McAdam, Ray",
+        "party": "Fine Gael",
+        "gender": "M"
+      },
+      {
+        "name": "Ó Ceannabháin, Eoghan",
+        "party": "People Before Profit-Solidarity",
+        "gender": "M"
+      },
+      {
+        "name": "O'Dea, Ruth",
+        "party": "Labour Party",
+        "gender": "F"
+      },
+      {
+        "name": "O'Leary, John",
+        "party": "Non-party",
+        "gender": "M"
+      },
+      {
+        "name": "Smyth, Ian Noel",
+        "party": "Aontú",
+        "gender": "M"
+      },
+      {
+        "name": "Steenson, Malachy",
+        "party": "Non-party",
+        "gender": "M"
+      },
+      {
+        "name": "Stephens, John",
+        "party": "Fianna Fáil",
+        "gender": "M"
+      }
+    ],
+    "counts": [
+      {
+        "count": 1,
+        "values": {
+          "Boylan, Janice": 4348,
+          "Corrigan, Tony": 30,
+          "Ennis, Daniel": 4903,
+          "Flood, Colm Joseph": 10,
+          "Flynn, Mannix": 157,
+          "Horner, Janet": 2907,
+          "Hutch, Gerard": 2817,
+          "McAdam, Ray": 2659,
+          "O'Dea, Ruth": 1454,
+          "O'Leary, John": 7,
+          "Smyth, Ian Noel": 505,
+          "Steenson, Malachy": 2342,
+          "Stephens, John": 1049,
+          "Ó Ceannabháin, Eoghan": 1681
+        },
+        "transfers": {
+          "Boylan, Janice": 0,
+          "Corrigan, Tony": 0,
+          "Ennis, Daniel": 0,
+          "Flood, Colm Joseph": 0,
+          "Flynn, Mannix": 0,
+          "Horner, Janet": 0,
+          "Hutch, Gerard": 0,
+          "McAdam, Ray": 0,
+          "O'Dea, Ruth": 0,
+          "O'Leary, John": 0,
+          "Smyth, Ian Noel": 0,
+          "Steenson, Malachy": 0,
+          "Stephens, John": 0,
+          "Ó Ceannabháin, Eoghan": 0
+        },
+        "status": {
+          "Boylan, Janice": "Continuing",
+          "Corrigan, Tony": "Continuing",
+          "Ennis, Daniel": "Continuing",
+          "Flood, Colm Joseph": "Continuing",
+          "Flynn, Mannix": "Continuing",
+          "Horner, Janet": "Continuing",
+          "Hutch, Gerard": "Continuing",
+          "McAdam, Ray": "Continuing",
+          "O'Dea, Ruth": "Continuing",
+          "O'Leary, John": "Continuing",
+          "Smyth, Ian Noel": "Continuing",
+          "Steenson, Malachy": "Continuing",
+          "Stephens, John": "Continuing",
+          "Ó Ceannabháin, Eoghan": "Continuing"
+        }
+      },
+      {
+        "count": 2,
+        "values": {
+          "Boylan, Janice": 4416,
+          "Corrigan, Tony": 0,
+          "Ennis, Daniel": 4954,
+          "Flood, Colm Joseph": 0,
+          "Flynn, Mannix": 0,
+          "Horner, Janet": 2958,
+          "Hutch, Gerard": 2872,
+          "McAdam, Ray": 2724,
+          "O'Dea, Ruth": 1481,
+          "O'Leary, John": 0,
+          "Smyth, Ian Noel": 0,
+          "Steenson, Malachy": 2542,
+          "Stephens, John": 1120,
+          "Ó Ceannabháin, Eoghan": 1719
+        },
+        "transfers": {
+          "Boylan, Janice": 68,
+          "Corrigan, Tony": -30,
+          "Ennis, Daniel": 51,
+          "Flood, Colm Joseph": -10,
+          "Flynn, Mannix": -157,
+          "Horner, Janet": 51,
+          "Hutch, Gerard": 55,
+          "McAdam, Ray": 65,
+          "O'Dea, Ruth": 27,
+          "O'Leary, John": -7,
+          "Smyth, Ian Noel": -505,
+          "Steenson, Malachy": 200,
+          "Stephens, John": 71,
+          "Ó Ceannabháin, Eoghan": 38
+        },
+        "status": {
+          "Boylan, Janice": "Continuing",
+          "Corrigan, Tony": "Eliminated",
+          "Ennis, Daniel": "Continuing",
+          "Flood, Colm Joseph": "Eliminated",
+          "Flynn, Mannix": "Eliminated",
+          "Horner, Janet": "Continuing",
+          "Hutch, Gerard": "Continuing",
+          "McAdam, Ray": "Continuing",
+          "O'Dea, Ruth": "Continuing",
+          "O'Leary, John": "Eliminated",
+          "Smyth, Ian Noel": "Eliminated",
+          "Steenson, Malachy": "Continuing",
+          "Stephens, John": "Continuing",
+          "Ó Ceannabháin, Eoghan": "Continuing"
+        }
+      },
+      {
+        "count": 3,
+        "values": {
+          "Boylan, Janice": 4484,
+          "Corrigan, Tony": 0,
+          "Ennis, Daniel": 5049,
+          "Flood, Colm Joseph": 0,
+          "Flynn, Mannix": 0,
+          "Horner, Janet": 3052,
+          "Hutch, Gerard": 2907,
+          "McAdam, Ray": 3277,
+          "O'Dea, Ruth": 1568,
+          "O'Leary, John": 0,
+          "Smyth, Ian Noel": 0,
+          "Steenson, Malachy": 2596,
+          "Stephens, John": 0,
+          "Ó Ceannabháin, Eoghan": 1744
+        },
+        "transfers": {
+          "Boylan, Janice": 68,
+          "Corrigan, Tony": 0,
+          "Ennis, Daniel": 95,
+          "Flood, Colm Joseph": 0,
+          "Flynn, Mannix": 0,
+          "Horner, Janet": 94,
+          "Hutch, Gerard": 35,
+          "McAdam, Ray": 553,
+          "O'Dea, Ruth": 87,
+          "O'Leary, John": 0,
+          "Smyth, Ian Noel": 0,
+          "Steenson, Malachy": 54,
+          "Stephens, John": -1120,
+          "Ó Ceannabháin, Eoghan": 25
+        },
+        "status": {
+          "Boylan, Janice": "Continuing",
+          "Corrigan, Tony": "Eliminated",
+          "Ennis, Daniel": "Continuing",
+          "Flood, Colm Joseph": "Eliminated",
+          "Flynn, Mannix": "Eliminated",
+          "Horner, Janet": "Continuing",
+          "Hutch, Gerard": "Continuing",
+          "McAdam, Ray": "Continuing",
+          "O'Dea, Ruth": "Continuing",
+          "O'Leary, John": "Eliminated",
+          "Smyth, Ian Noel": "Eliminated",
+          "Steenson, Malachy": "Continuing",
+          "Stephens, John": "Eliminated",
+          "Ó Ceannabháin, Eoghan": "Continuing"
+        }
+      },
+      {
+        "count": 4,
+        "values": {
+          "Boylan, Janice": 4587,
+          "Corrigan, Tony": 0,
+          "Ennis, Daniel": 5512,
+          "Flood, Colm Joseph": 0,
+          "Flynn, Mannix": 0,
+          "Horner, Janet": 3632,
+          "Hutch, Gerard": 2923,
+          "McAdam, Ray": 3475,
+          "O'Dea, Ruth": 0,
+          "O'Leary, John": 0,
+          "Smyth, Ian Noel": 0,
+          "Steenson, Malachy": 2614,
+          "Stephens, John": 0,
+          "Ó Ceannabháin, Eoghan": 1853
+        },
+        "transfers": {
+          "Boylan, Janice": 103,
+          "Corrigan, Tony": 0,
+          "Ennis, Daniel": 463,
+          "Flood, Colm Joseph": 0,
+          "Flynn, Mannix": 0,
+          "Horner, Janet": 580,
+          "Hutch, Gerard": 16,
+          "McAdam, Ray": 198,
+          "O'Dea, Ruth": -1568,
+          "O'Leary, John": 0,
+          "Smyth, Ian Noel": 0,
+          "Steenson, Malachy": 18,
+          "Stephens, John": 0,
+          "Ó Ceannabháin, Eoghan": 109
+        },
+        "status": {
+          "Boylan, Janice": "Continuing",
+          "Corrigan, Tony": "Eliminated",
+          "Ennis, Daniel": "Continuing",
+          "Flood, Colm Joseph": "Eliminated",
+          "Flynn, Mannix": "Eliminated",
+          "Horner, Janet": "Continuing",
+          "Hutch, Gerard": "Continuing",
+          "McAdam, Ray": "Continuing",
+          "O'Dea, Ruth": "Eliminated",
+          "O'Leary, John": "Eliminated",
+          "Smyth, Ian Noel": "Eliminated",
+          "Steenson, Malachy": "Continuing",
+          "Stephens, John": "Eliminated",
+          "Ó Ceannabháin, Eoghan": "Continuing"
+        }
+      },
+      {
+        "count": 5,
+        "values": {
+          "Boylan, Janice": 5017,
+          "Corrigan, Tony": 0,
+          "Ennis, Daniel": 6383,
+          "Flood, Colm Joseph": 0,
+          "Flynn, Mannix": 0,
+          "Horner, Janet": 4010,
+          "Hutch, Gerard": 2959,
+          "McAdam, Ray": 3500,
+          "O'Dea, Ruth": 0,
+          "O'Leary, John": 0,
+          "Smyth, Ian Noel": 0,
+          "Steenson, Malachy": 2641,
+          "Stephens, John": 0,
+          "Ó Ceannabháin, Eoghan": 0
+        },
+        "transfers": {
+          "Boylan, Janice": 430,
+          "Corrigan, Tony": 0,
+          "Ennis, Daniel": 871,
+          "Flood, Colm Joseph": 0,
+          "Flynn, Mannix": 0,
+          "Horner, Janet": 378,
+          "Hutch, Gerard": 36,
+          "McAdam, Ray": 25,
+          "O'Dea, Ruth": 0,
+          "O'Leary, John": 0,
+          "Smyth, Ian Noel": 0,
+          "Steenson, Malachy": 27,
+          "Stephens, John": 0,
+          "Ó Ceannabháin, Eoghan": -1853
+        },
+        "status": {
+          "Boylan, Janice": "Continuing",
+          "Corrigan, Tony": "Eliminated",
+          "Ennis, Daniel": "Continuing",
+          "Flood, Colm Joseph": "Eliminated",
+          "Flynn, Mannix": "Eliminated",
+          "Horner, Janet": "Continuing",
+          "Hutch, Gerard": "Continuing",
+          "McAdam, Ray": "Continuing",
+          "O'Dea, Ruth": "Eliminated",
+          "O'Leary, John": "Eliminated",
+          "Smyth, Ian Noel": "Eliminated",
+          "Steenson, Malachy": "Continuing",
+          "Stephens, John": "Eliminated",
+          "Ó Ceannabháin, Eoghan": "Eliminated"
+        }
+      },
+      {
+        "count": 6,
+        "values": {
+          "Boylan, Janice": 5373,
+          "Corrigan, Tony": 0,
+          "Ennis, Daniel": 6509,
+          "Flood, Colm Joseph": 0,
+          "Flynn, Mannix": 0,
+          "Horner, Janet": 4058,
+          "Hutch, Gerard": 4349,
+          "McAdam, Ray": 3614,
+          "O'Dea, Ruth": 0,
+          "O'Leary, John": 0,
+          "Smyth, Ian Noel": 0,
+          "Steenson, Malachy": 0,
+          "Stephens, John": 0,
+          "Ó Ceannabháin, Eoghan": 0
+        },
+        "transfers": {
+          "Boylan, Janice": 356,
+          "Corrigan, Tony": 0,
+          "Ennis, Daniel": 126,
+          "Flood, Colm Joseph": 0,
+          "Flynn, Mannix": 0,
+          "Horner, Janet": 48,
+          "Hutch, Gerard": 1390,
+          "McAdam, Ray": 114,
+          "O'Dea, Ruth": 0,
+          "O'Leary, John": 0,
+          "Smyth, Ian Noel": 0,
+          "Steenson, Malachy": -2641,
+          "Stephens, John": 0,
+          "Ó Ceannabháin, Eoghan": 0
+        },
+        "status": {
+          "Boylan, Janice": "Continuing",
+          "Corrigan, Tony": "Eliminated",
+          "Ennis, Daniel": "Continuing",
+          "Flood, Colm Joseph": "Eliminated",
+          "Flynn, Mannix": "Eliminated",
+          "Horner, Janet": "Continuing",
+          "Hutch, Gerard": "Continuing",
+          "McAdam, Ray": "Continuing",
+          "O'Dea, Ruth": "Eliminated",
+          "O'Leary, John": "Eliminated",
+          "Smyth, Ian Noel": "Eliminated",
+          "Steenson, Malachy": "Eliminated",
+          "Stephens, John": "Eliminated",
+          "Ó Ceannabháin, Eoghan": "Eliminated"
+        }
+      },
+      {
+        "count": 7,
+        "values": {
+          "Boylan, Janice": 5569,
+          "Corrigan, Tony": 0,
+          "Ennis, Daniel": 7681,
+          "Flood, Colm Joseph": 0,
+          "Flynn, Mannix": 0,
+          "Horner, Janet": 5272,
+          "Hutch, Gerard": 4466,
+          "McAdam, Ray": 0,
+          "O'Dea, Ruth": 0,
+          "O'Leary, John": 0,
+          "Smyth, Ian Noel": 0,
+          "Steenson, Malachy": 0,
+          "Stephens, John": 0,
+          "Ó Ceannabháin, Eoghan": 0
+        },
+        "transfers": {
+          "Boylan, Janice": 196,
+          "Corrigan, Tony": 0,
+          "Ennis, Daniel": 1172,
+          "Flood, Colm Joseph": 0,
+          "Flynn, Mannix": 0,
+          "Horner, Janet": 1214,
+          "Hutch, Gerard": 117,
+          "McAdam, Ray": -3614,
+          "O'Dea, Ruth": 0,
+          "O'Leary, John": 0,
+          "Smyth, Ian Noel": 0,
+          "Steenson, Malachy": 0,
+          "Stephens, John": 0,
+          "Ó Ceannabháin, Eoghan": 0
+        },
+        "status": {
+          "Boylan, Janice": "Continuing",
+          "Corrigan, Tony": "Eliminated",
+          "Ennis, Daniel": "Continuing",
+          "Flood, Colm Joseph": "Eliminated",
+          "Flynn, Mannix": "Eliminated",
+          "Horner, Janet": "Continuing",
+          "Hutch, Gerard": "Continuing",
+          "McAdam, Ray": "Eliminated",
+          "O'Dea, Ruth": "Eliminated",
+          "O'Leary, John": "Eliminated",
+          "Smyth, Ian Noel": "Eliminated",
+          "Steenson, Malachy": "Eliminated",
+          "Stephens, John": "Eliminated",
+          "Ó Ceannabháin, Eoghan": "Eliminated"
+        }
+      },
+      {
+        "count": 8,
+        "values": {
+          "Boylan, Janice": 7210,
+          "Corrigan, Tony": 0,
+          "Ennis, Daniel": 8306,
+          "Flood, Colm Joseph": 0,
+          "Flynn, Mannix": 0,
+          "Horner, Janet": 5452,
+          "Hutch, Gerard": 0,
+          "McAdam, Ray": 0,
+          "O'Dea, Ruth": 0,
+          "O'Leary, John": 0,
+          "Smyth, Ian Noel": 0,
+          "Steenson, Malachy": 0,
+          "Stephens, John": 0,
+          "Ó Ceannabháin, Eoghan": 0
+        },
+        "transfers": {
+          "Boylan, Janice": 1641,
+          "Corrigan, Tony": 0,
+          "Ennis, Daniel": 625,
+          "Flood, Colm Joseph": 0,
+          "Flynn, Mannix": 0,
+          "Horner, Janet": 180,
+          "Hutch, Gerard": -4466,
+          "McAdam, Ray": 0,
+          "O'Dea, Ruth": 0,
+          "O'Leary, John": 0,
+          "Smyth, Ian Noel": 0,
+          "Steenson, Malachy": 0,
+          "Stephens, John": 0,
+          "Ó Ceannabháin, Eoghan": 0
+        },
+        "status": {
+          "Boylan, Janice": "Continuing",
+          "Corrigan, Tony": "Eliminated",
+          "Ennis, Daniel": "Continuing",
+          "Flood, Colm Joseph": "Eliminated",
+          "Flynn, Mannix": "Eliminated",
+          "Horner, Janet": "Continuing",
+          "Hutch, Gerard": "Eliminated",
+          "McAdam, Ray": "Eliminated",
+          "O'Dea, Ruth": "Eliminated",
+          "O'Leary, John": "Eliminated",
+          "Smyth, Ian Noel": "Eliminated",
+          "Steenson, Malachy": "Eliminated",
+          "Stephens, John": "Eliminated",
+          "Ó Ceannabháin, Eoghan": "Eliminated"
+        }
+      },
+      {
+        "count": 9,
+        "values": {
+          "Boylan, Janice": 7787,
+          "Corrigan, Tony": 0,
+          "Ennis, Daniel": 12050,
+          "Flood, Colm Joseph": 0,
+          "Flynn, Mannix": 0,
+          "Horner, Janet": 0,
+          "Hutch, Gerard": 0,
+          "McAdam, Ray": 0,
+          "O'Dea, Ruth": 0,
+          "O'Leary, John": 0,
+          "Smyth, Ian Noel": 0,
+          "Steenson, Malachy": 0,
+          "Stephens, John": 0,
+          "Ó Ceannabháin, Eoghan": 0
+        },
+        "transfers": {
+          "Boylan, Janice": 577,
+          "Corrigan, Tony": 0,
+          "Ennis, Daniel": 3744,
+          "Flood, Colm Joseph": 0,
+          "Flynn, Mannix": 0,
+          "Horner, Janet": -5452,
+          "Hutch, Gerard": 0,
+          "McAdam, Ray": 0,
+          "O'Dea, Ruth": 0,
+          "O'Leary, John": 0,
+          "Smyth, Ian Noel": 0,
+          "Steenson, Malachy": 0,
+          "Stephens, John": 0,
+          "Ó Ceannabháin, Eoghan": 0
+        },
+        "status": {
+          "Boylan, Janice": "Continuing",
+          "Corrigan, Tony": "Eliminated",
+          "Ennis, Daniel": "Elected",
+          "Flood, Colm Joseph": "Eliminated",
+          "Flynn, Mannix": "Eliminated",
+          "Horner, Janet": "Eliminated",
+          "Hutch, Gerard": "Eliminated",
+          "McAdam, Ray": "Eliminated",
+          "O'Dea, Ruth": "Eliminated",
+          "O'Leary, John": "Eliminated",
+          "Smyth, Ian Noel": "Eliminated",
+          "Steenson, Malachy": "Eliminated",
+          "Stephens, John": "Eliminated",
+          "Ó Ceannabháin, Eoghan": "Eliminated"
+        }
+      }
+    ]
+  },
+  {
+    "election": "2026-galway-west-byelection",
+    "electionLabel": "2026 Galway West by-election",
+    "electionDate": "2026-05-22",
+    "constituency": "Galway West",
+    "quota": 23947,
+    "seats": 1,
+    "maxValue": 19218,
+    "maxCount": 11,
+    "candidates": [
+      {
+        "name": "Bairéad, Néill",
+        "party": "Non-party",
+        "gender": "M"
+      },
+      {
+        "name": "Cahill, AJ",
+        "party": "The Irish People",
+        "gender": "M"
+      },
+      {
+        "name": "Cubbard, Mike",
+        "party": "Non-party",
+        "gender": "M"
+      },
+      {
+        "name": "Feeney, Patrick",
+        "party": "Non-party",
+        "gender": "M"
+      },
+      {
+        "name": "Garrity, Sheila",
+        "party": "Non-party",
+        "gender": "F"
+      },
+      {
+        "name": "Keane, Cillian",
+        "party": "Fianna Fáil",
+        "gender": "M"
+      },
+      {
+        "name": "Kyne, Seán",
+        "party": "Fine Gael",
+        "gender": "M"
+      },
+      {
+        "name": "Lohan, Mark",
+        "party": "Sinn Féin",
+        "gender": "M"
+      },
+      {
+        "name": "Murphy, Niall",
+        "party": "Green Party",
+        "gender": "M"
+      },
+      {
+        "name": "Nic Fhionnlaoich, Míde",
+        "party": "Social Democrats",
+        "gender": "F"
+      },
+      {
+        "name": "Nugent, Orla",
+        "party": "Aontú",
+        "gender": "F"
+      },
+      {
+        "name": "O'Leary, John",
+        "party": "Non-party",
+        "gender": "M"
+      },
+      {
+        "name": "Ogbu, Helen",
+        "party": "Labour Party",
+        "gender": "F"
+      },
+      {
+        "name": "Rooke, Denman",
+        "party": "People Before Profit-Solidarity",
+        "gender": "M"
+      },
+      {
+        "name": "Ryan, Michael",
+        "party": "Non-party",
+        "gender": "M"
+      },
+      {
+        "name": "Thomas, Noel",
+        "party": "Independent Ireland",
+        "gender": "M"
+      },
+      {
+        "name": "Welby, Thomas",
+        "party": "Non-party",
+        "gender": "M"
+      }
+    ],
+    "counts": [
+      {
+        "count": 1,
+        "values": {
+          "Bairéad, Néill": 112,
+          "Cahill, AJ": 890,
+          "Cubbard, Mike": 3396,
+          "Feeney, Patrick": 39,
+          "Garrity, Sheila": 1421,
+          "Keane, Cillian": 4192,
+          "Kyne, Seán": 9647,
+          "Lohan, Mark": 3208,
+          "Murphy, Niall": 1199,
+          "Nic Fhionnlaoich, Míde": 3354,
+          "Nugent, Orla": 1167,
+          "O'Leary, John": 13,
+          "Ogbu, Helen": 5462,
+          "Rooke, Denman": 540,
+          "Ryan, Michael": 108,
+          "Thomas, Noel": 10007,
+          "Welby, Thomas": 3138
+        },
+        "transfers": {
+          "Bairéad, Néill": 0,
+          "Cahill, AJ": 0,
+          "Cubbard, Mike": 0,
+          "Feeney, Patrick": 0,
+          "Garrity, Sheila": 0,
+          "Keane, Cillian": 0,
+          "Kyne, Seán": 0,
+          "Lohan, Mark": 0,
+          "Murphy, Niall": 0,
+          "Nic Fhionnlaoich, Míde": 0,
+          "Nugent, Orla": 0,
+          "O'Leary, John": 0,
+          "Ogbu, Helen": 0,
+          "Rooke, Denman": 0,
+          "Ryan, Michael": 0,
+          "Thomas, Noel": 0,
+          "Welby, Thomas": 0
+        },
+        "status": {
+          "Bairéad, Néill": "Continuing",
+          "Cahill, AJ": "Continuing",
+          "Cubbard, Mike": "Continuing",
+          "Feeney, Patrick": "Continuing",
+          "Garrity, Sheila": "Continuing",
+          "Keane, Cillian": "Continuing",
+          "Kyne, Seán": "Continuing",
+          "Lohan, Mark": "Continuing",
+          "Murphy, Niall": "Continuing",
+          "Nic Fhionnlaoich, Míde": "Continuing",
+          "Nugent, Orla": "Continuing",
+          "O'Leary, John": "Continuing",
+          "Ogbu, Helen": "Continuing",
+          "Rooke, Denman": "Continuing",
+          "Ryan, Michael": "Continuing",
+          "Thomas, Noel": "Continuing",
+          "Welby, Thomas": "Continuing"
+        }
+      },
+      {
+        "count": 2,
+        "values": {
+          "Bairéad, Néill": 0,
+          "Cahill, AJ": 949,
+          "Cubbard, Mike": 3440,
+          "Feeney, Patrick": 0,
+          "Garrity, Sheila": 1542,
+          "Keane, Cillian": 4201,
+          "Kyne, Seán": 9673,
+          "Lohan, Mark": 3298,
+          "Murphy, Niall": 1241,
+          "Nic Fhionnlaoich, Míde": 3551,
+          "Nugent, Orla": 1194,
+          "O'Leary, John": 0,
+          "Ogbu, Helen": 5560,
+          "Rooke, Denman": 0,
+          "Ryan, Michael": 0,
+          "Thomas, Noel": 10038,
+          "Welby, Thomas": 3161
+        },
+        "transfers": {
+          "Bairéad, Néill": -112,
+          "Cahill, AJ": 59,
+          "Cubbard, Mike": 44,
+          "Feeney, Patrick": -39,
+          "Garrity, Sheila": 121,
+          "Keane, Cillian": 9,
+          "Kyne, Seán": 26,
+          "Lohan, Mark": 90,
+          "Murphy, Niall": 42,
+          "Nic Fhionnlaoich, Míde": 197,
+          "Nugent, Orla": 27,
+          "O'Leary, John": -13,
+          "Ogbu, Helen": 98,
+          "Rooke, Denman": -540,
+          "Ryan, Michael": -108,
+          "Thomas, Noel": 31,
+          "Welby, Thomas": 23
+        },
+        "status": {
+          "Bairéad, Néill": "Eliminated",
+          "Cahill, AJ": "Continuing",
+          "Cubbard, Mike": "Continuing",
+          "Feeney, Patrick": "Eliminated",
+          "Garrity, Sheila": "Continuing",
+          "Keane, Cillian": "Continuing",
+          "Kyne, Seán": "Continuing",
+          "Lohan, Mark": "Continuing",
+          "Murphy, Niall": "Continuing",
+          "Nic Fhionnlaoich, Míde": "Continuing",
+          "Nugent, Orla": "Continuing",
+          "O'Leary, John": "Eliminated",
+          "Ogbu, Helen": "Continuing",
+          "Rooke, Denman": "Eliminated",
+          "Ryan, Michael": "Eliminated",
+          "Thomas, Noel": "Continuing",
+          "Welby, Thomas": "Continuing"
+        }
+      },
+      {
+        "count": 3,
+        "values": {
+          "Bairéad, Néill": 0,
+          "Cahill, AJ": 0,
+          "Cubbard, Mike": 3524,
+          "Feeney, Patrick": 0,
+          "Garrity, Sheila": 1568,
+          "Keane, Cillian": 4226,
+          "Kyne, Seán": 9693,
+          "Lohan, Mark": 3333,
+          "Murphy, Niall": 1252,
+          "Nic Fhionnlaoich, Míde": 3569,
+          "Nugent, Orla": 1368,
+          "O'Leary, John": 0,
+          "Ogbu, Helen": 5578,
+          "Rooke, Denman": 0,
+          "Ryan, Michael": 0,
+          "Thomas, Noel": 10477,
+          "Welby, Thomas": 3193
+        },
+        "transfers": {
+          "Bairéad, Néill": 0,
+          "Cahill, AJ": -949,
+          "Cubbard, Mike": 84,
+          "Feeney, Patrick": 0,
+          "Garrity, Sheila": 26,
+          "Keane, Cillian": 25,
+          "Kyne, Seán": 20,
+          "Lohan, Mark": 35,
+          "Murphy, Niall": 11,
+          "Nic Fhionnlaoich, Míde": 18,
+          "Nugent, Orla": 174,
+          "O'Leary, John": 0,
+          "Ogbu, Helen": 18,
+          "Rooke, Denman": 0,
+          "Ryan, Michael": 0,
+          "Thomas, Noel": 439,
+          "Welby, Thomas": 32
+        },
+        "status": {
+          "Bairéad, Néill": "Eliminated",
+          "Cahill, AJ": "Eliminated",
+          "Cubbard, Mike": "Continuing",
+          "Feeney, Patrick": "Eliminated",
+          "Garrity, Sheila": "Continuing",
+          "Keane, Cillian": "Continuing",
+          "Kyne, Seán": "Continuing",
+          "Lohan, Mark": "Continuing",
+          "Murphy, Niall": "Continuing",
+          "Nic Fhionnlaoich, Míde": "Continuing",
+          "Nugent, Orla": "Continuing",
+          "O'Leary, John": "Eliminated",
+          "Ogbu, Helen": "Continuing",
+          "Rooke, Denman": "Eliminated",
+          "Ryan, Michael": "Eliminated",
+          "Thomas, Noel": "Continuing",
+          "Welby, Thomas": "Continuing"
+        }
+      },
+      {
+        "count": 4,
+        "values": {
+          "Bairéad, Néill": 0,
+          "Cahill, AJ": 0,
+          "Cubbard, Mike": 3595,
+          "Feeney, Patrick": 0,
+          "Garrity, Sheila": 1696,
+          "Keane, Cillian": 4259,
+          "Kyne, Seán": 9907,
+          "Lohan, Mark": 3364,
+          "Murphy, Niall": 0,
+          "Nic Fhionnlaoich, Míde": 3836,
+          "Nugent, Orla": 1397,
+          "O'Leary, John": 0,
+          "Ogbu, Helen": 5970,
+          "Rooke, Denman": 0,
+          "Ryan, Michael": 0,
+          "Thomas, Noel": 10497,
+          "Welby, Thomas": 3219
+        },
+        "transfers": {
+          "Bairéad, Néill": 0,
+          "Cahill, AJ": 0,
+          "Cubbard, Mike": 71,
+          "Feeney, Patrick": 0,
+          "Garrity, Sheila": 128,
+          "Keane, Cillian": 33,
+          "Kyne, Seán": 214,
+          "Lohan, Mark": 31,
+          "Murphy, Niall": -1252,
+          "Nic Fhionnlaoich, Míde": 267,
+          "Nugent, Orla": 29,
+          "O'Leary, John": 0,
+          "Ogbu, Helen": 392,
+          "Rooke, Denman": 0,
+          "Ryan, Michael": 0,
+          "Thomas, Noel": 20,
+          "Welby, Thomas": 26
+        },
+        "status": {
+          "Bairéad, Néill": "Eliminated",
+          "Cahill, AJ": "Eliminated",
+          "Cubbard, Mike": "Continuing",
+          "Feeney, Patrick": "Eliminated",
+          "Garrity, Sheila": "Continuing",
+          "Keane, Cillian": "Continuing",
+          "Kyne, Seán": "Continuing",
+          "Lohan, Mark": "Continuing",
+          "Murphy, Niall": "Eliminated",
+          "Nic Fhionnlaoich, Míde": "Continuing",
+          "Nugent, Orla": "Continuing",
+          "O'Leary, John": "Eliminated",
+          "Ogbu, Helen": "Continuing",
+          "Rooke, Denman": "Eliminated",
+          "Ryan, Michael": "Eliminated",
+          "Thomas, Noel": "Continuing",
+          "Welby, Thomas": "Continuing"
+        }
+      },
+      {
+        "count": 5,
+        "values": {
+          "Bairéad, Néill": 0,
+          "Cahill, AJ": 0,
+          "Cubbard, Mike": 3908,
+          "Feeney, Patrick": 0,
+          "Garrity, Sheila": 0,
+          "Keane, Cillian": 4401,
+          "Kyne, Seán": 10126,
+          "Lohan, Mark": 3618,
+          "Murphy, Niall": 0,
+          "Nic Fhionnlaoich, Míde": 4440,
+          "Nugent, Orla": 0,
+          "O'Leary, John": 0,
+          "Ogbu, Helen": 6545,
+          "Rooke, Denman": 0,
+          "Ryan, Michael": 0,
+          "Thomas, Noel": 11075,
+          "Welby, Thomas": 3351
+        },
+        "transfers": {
+          "Bairéad, Néill": 0,
+          "Cahill, AJ": 0,
+          "Cubbard, Mike": 313,
+          "Feeney, Patrick": 0,
+          "Garrity, Sheila": -1696,
+          "Keane, Cillian": 142,
+          "Kyne, Seán": 219,
+          "Lohan, Mark": 254,
+          "Murphy, Niall": 0,
+          "Nic Fhionnlaoich, Míde": 604,
+          "Nugent, Orla": -1397,
+          "O'Leary, John": 0,
+          "Ogbu, Helen": 575,
+          "Rooke, Denman": 0,
+          "Ryan, Michael": 0,
+          "Thomas, Noel": 578,
+          "Welby, Thomas": 132
+        },
+        "status": {
+          "Bairéad, Néill": "Eliminated",
+          "Cahill, AJ": "Eliminated",
+          "Cubbard, Mike": "Continuing",
+          "Feeney, Patrick": "Eliminated",
+          "Garrity, Sheila": "Eliminated",
+          "Keane, Cillian": "Continuing",
+          "Kyne, Seán": "Continuing",
+          "Lohan, Mark": "Continuing",
+          "Murphy, Niall": "Eliminated",
+          "Nic Fhionnlaoich, Míde": "Continuing",
+          "Nugent, Orla": "Eliminated",
+          "O'Leary, John": "Eliminated",
+          "Ogbu, Helen": "Continuing",
+          "Rooke, Denman": "Eliminated",
+          "Ryan, Michael": "Eliminated",
+          "Thomas, Noel": "Continuing",
+          "Welby, Thomas": "Continuing"
+        }
+      },
+      {
+        "count": 6,
+        "values": {
+          "Bairéad, Néill": 0,
+          "Cahill, AJ": 0,
+          "Cubbard, Mike": 4140,
+          "Feeney, Patrick": 0,
+          "Garrity, Sheila": 0,
+          "Keane, Cillian": 4668,
+          "Kyne, Seán": 10966,
+          "Lohan, Mark": 3763,
+          "Murphy, Niall": 0,
+          "Nic Fhionnlaoich, Míde": 4587,
+          "Nugent, Orla": 0,
+          "O'Leary, John": 0,
+          "Ogbu, Helen": 6763,
+          "Rooke, Denman": 0,
+          "Ryan, Michael": 0,
+          "Thomas, Noel": 12246,
+          "Welby, Thomas": 0
+        },
+        "transfers": {
+          "Bairéad, Néill": 0,
+          "Cahill, AJ": 0,
+          "Cubbard, Mike": 232,
+          "Feeney, Patrick": 0,
+          "Garrity, Sheila": 0,
+          "Keane, Cillian": 267,
+          "Kyne, Seán": 840,
+          "Lohan, Mark": 145,
+          "Murphy, Niall": 0,
+          "Nic Fhionnlaoich, Míde": 147,
+          "Nugent, Orla": 0,
+          "O'Leary, John": 0,
+          "Ogbu, Helen": 218,
+          "Rooke, Denman": 0,
+          "Ryan, Michael": 0,
+          "Thomas, Noel": 1171,
+          "Welby, Thomas": -3351
+        },
+        "status": {
+          "Bairéad, Néill": "Eliminated",
+          "Cahill, AJ": "Eliminated",
+          "Cubbard, Mike": "Continuing",
+          "Feeney, Patrick": "Eliminated",
+          "Garrity, Sheila": "Eliminated",
+          "Keane, Cillian": "Continuing",
+          "Kyne, Seán": "Continuing",
+          "Lohan, Mark": "Continuing",
+          "Murphy, Niall": "Eliminated",
+          "Nic Fhionnlaoich, Míde": "Continuing",
+          "Nugent, Orla": "Eliminated",
+          "O'Leary, John": "Eliminated",
+          "Ogbu, Helen": "Continuing",
+          "Rooke, Denman": "Eliminated",
+          "Ryan, Michael": "Eliminated",
+          "Thomas, Noel": "Continuing",
+          "Welby, Thomas": "Eliminated"
+        }
+      },
+      {
+        "count": 7,
+        "values": {
+          "Bairéad, Néill": 0,
+          "Cahill, AJ": 0,
+          "Cubbard, Mike": 4737,
+          "Feeney, Patrick": 0,
+          "Garrity, Sheila": 0,
+          "Keane, Cillian": 4749,
+          "Kyne, Seán": 11114,
+          "Lohan, Mark": 0,
+          "Murphy, Niall": 0,
+          "Nic Fhionnlaoich, Míde": 5409,
+          "Nugent, Orla": 0,
+          "O'Leary, John": 0,
+          "Ogbu, Helen": 7457,
+          "Rooke, Denman": 0,
+          "Ryan, Michael": 0,
+          "Thomas, Noel": 12947,
+          "Welby, Thomas": 0
+        },
+        "transfers": {
+          "Bairéad, Néill": 0,
+          "Cahill, AJ": 0,
+          "Cubbard, Mike": 597,
+          "Feeney, Patrick": 0,
+          "Garrity, Sheila": 0,
+          "Keane, Cillian": 81,
+          "Kyne, Seán": 148,
+          "Lohan, Mark": -3763,
+          "Murphy, Niall": 0,
+          "Nic Fhionnlaoich, Míde": 822,
+          "Nugent, Orla": 0,
+          "O'Leary, John": 0,
+          "Ogbu, Helen": 694,
+          "Rooke, Denman": 0,
+          "Ryan, Michael": 0,
+          "Thomas, Noel": 701,
+          "Welby, Thomas": 0
+        },
+        "status": {
+          "Bairéad, Néill": "Eliminated",
+          "Cahill, AJ": "Eliminated",
+          "Cubbard, Mike": "Continuing",
+          "Feeney, Patrick": "Eliminated",
+          "Garrity, Sheila": "Eliminated",
+          "Keane, Cillian": "Continuing",
+          "Kyne, Seán": "Continuing",
+          "Lohan, Mark": "Eliminated",
+          "Murphy, Niall": "Eliminated",
+          "Nic Fhionnlaoich, Míde": "Continuing",
+          "Nugent, Orla": "Eliminated",
+          "O'Leary, John": "Eliminated",
+          "Ogbu, Helen": "Continuing",
+          "Rooke, Denman": "Eliminated",
+          "Ryan, Michael": "Eliminated",
+          "Thomas, Noel": "Continuing",
+          "Welby, Thomas": "Eliminated"
+        }
+      },
+      {
+        "count": 8,
+        "values": {
+          "Bairéad, Néill": 0,
+          "Cahill, AJ": 0,
+          "Cubbard, Mike": 0,
+          "Feeney, Patrick": 0,
+          "Garrity, Sheila": 0,
+          "Keane, Cillian": 5154,
+          "Kyne, Seán": 11788,
+          "Lohan, Mark": 0,
+          "Murphy, Niall": 0,
+          "Nic Fhionnlaoich, Míde": 5938,
+          "Nugent, Orla": 0,
+          "O'Leary, John": 0,
+          "Ogbu, Helen": 8500,
+          "Rooke, Denman": 0,
+          "Ryan, Michael": 0,
+          "Thomas, Noel": 13897,
+          "Welby, Thomas": 0
+        },
+        "transfers": {
+          "Bairéad, Néill": 0,
+          "Cahill, AJ": 0,
+          "Cubbard, Mike": -4737,
+          "Feeney, Patrick": 0,
+          "Garrity, Sheila": 0,
+          "Keane, Cillian": 405,
+          "Kyne, Seán": 674,
+          "Lohan, Mark": 0,
+          "Murphy, Niall": 0,
+          "Nic Fhionnlaoich, Míde": 529,
+          "Nugent, Orla": 0,
+          "O'Leary, John": 0,
+          "Ogbu, Helen": 1043,
+          "Rooke, Denman": 0,
+          "Ryan, Michael": 0,
+          "Thomas, Noel": 950,
+          "Welby, Thomas": 0
+        },
+        "status": {
+          "Bairéad, Néill": "Eliminated",
+          "Cahill, AJ": "Eliminated",
+          "Cubbard, Mike": "Eliminated",
+          "Feeney, Patrick": "Eliminated",
+          "Garrity, Sheila": "Eliminated",
+          "Keane, Cillian": "Continuing",
+          "Kyne, Seán": "Continuing",
+          "Lohan, Mark": "Eliminated",
+          "Murphy, Niall": "Eliminated",
+          "Nic Fhionnlaoich, Míde": "Continuing",
+          "Nugent, Orla": "Eliminated",
+          "O'Leary, John": "Eliminated",
+          "Ogbu, Helen": "Continuing",
+          "Rooke, Denman": "Eliminated",
+          "Ryan, Michael": "Eliminated",
+          "Thomas, Noel": "Continuing",
+          "Welby, Thomas": "Eliminated"
+        }
+      },
+      {
+        "count": 9,
+        "values": {
+          "Bairéad, Néill": 0,
+          "Cahill, AJ": 0,
+          "Cubbard, Mike": 0,
+          "Feeney, Patrick": 0,
+          "Garrity, Sheila": 0,
+          "Keane, Cillian": 0,
+          "Kyne, Seán": 14369,
+          "Lohan, Mark": 0,
+          "Murphy, Niall": 0,
+          "Nic Fhionnlaoich, Míde": 6158,
+          "Nugent, Orla": 0,
+          "O'Leary, John": 0,
+          "Ogbu, Helen": 9063,
+          "Rooke, Denman": 0,
+          "Ryan, Michael": 0,
+          "Thomas, Noel": 14694,
+          "Welby, Thomas": 0
+        },
+        "transfers": {
+          "Bairéad, Néill": 0,
+          "Cahill, AJ": 0,
+          "Cubbard, Mike": 0,
+          "Feeney, Patrick": 0,
+          "Garrity, Sheila": 0,
+          "Keane, Cillian": -5154,
+          "Kyne, Seán": 2581,
+          "Lohan, Mark": 0,
+          "Murphy, Niall": 0,
+          "Nic Fhionnlaoich, Míde": 220,
+          "Nugent, Orla": 0,
+          "O'Leary, John": 0,
+          "Ogbu, Helen": 563,
+          "Rooke, Denman": 0,
+          "Ryan, Michael": 0,
+          "Thomas, Noel": 797,
+          "Welby, Thomas": 0
+        },
+        "status": {
+          "Bairéad, Néill": "Eliminated",
+          "Cahill, AJ": "Eliminated",
+          "Cubbard, Mike": "Eliminated",
+          "Feeney, Patrick": "Eliminated",
+          "Garrity, Sheila": "Eliminated",
+          "Keane, Cillian": "Eliminated",
+          "Kyne, Seán": "Continuing",
+          "Lohan, Mark": "Eliminated",
+          "Murphy, Niall": "Eliminated",
+          "Nic Fhionnlaoich, Míde": "Continuing",
+          "Nugent, Orla": "Eliminated",
+          "O'Leary, John": "Eliminated",
+          "Ogbu, Helen": "Continuing",
+          "Rooke, Denman": "Eliminated",
+          "Ryan, Michael": "Eliminated",
+          "Thomas, Noel": "Continuing",
+          "Welby, Thomas": "Eliminated"
+        }
+      },
+      {
+        "count": 10,
+        "values": {
+          "Bairéad, Néill": 0,
+          "Cahill, AJ": 0,
+          "Cubbard, Mike": 0,
+          "Feeney, Patrick": 0,
+          "Garrity, Sheila": 0,
+          "Keane, Cillian": 0,
+          "Kyne, Seán": 14969,
+          "Lohan, Mark": 0,
+          "Murphy, Niall": 0,
+          "Nic Fhionnlaoich, Míde": 0,
+          "Nugent, Orla": 0,
+          "O'Leary, John": 0,
+          "Ogbu, Helen": 12960,
+          "Rooke, Denman": 0,
+          "Ryan, Michael": 0,
+          "Thomas, Noel": 15246,
+          "Welby, Thomas": 0
+        },
+        "transfers": {
+          "Bairéad, Néill": 0,
+          "Cahill, AJ": 0,
+          "Cubbard, Mike": 0,
+          "Feeney, Patrick": 0,
+          "Garrity, Sheila": 0,
+          "Keane, Cillian": 0,
+          "Kyne, Seán": 600,
+          "Lohan, Mark": 0,
+          "Murphy, Niall": 0,
+          "Nic Fhionnlaoich, Míde": -6158,
+          "Nugent, Orla": 0,
+          "O'Leary, John": 0,
+          "Ogbu, Helen": 3897,
+          "Rooke, Denman": 0,
+          "Ryan, Michael": 0,
+          "Thomas, Noel": 552,
+          "Welby, Thomas": 0
+        },
+        "status": {
+          "Bairéad, Néill": "Eliminated",
+          "Cahill, AJ": "Eliminated",
+          "Cubbard, Mike": "Eliminated",
+          "Feeney, Patrick": "Eliminated",
+          "Garrity, Sheila": "Eliminated",
+          "Keane, Cillian": "Eliminated",
+          "Kyne, Seán": "Continuing",
+          "Lohan, Mark": "Eliminated",
+          "Murphy, Niall": "Eliminated",
+          "Nic Fhionnlaoich, Míde": "Eliminated",
+          "Nugent, Orla": "Eliminated",
+          "O'Leary, John": "Eliminated",
+          "Ogbu, Helen": "Continuing",
+          "Rooke, Denman": "Eliminated",
+          "Ryan, Michael": "Eliminated",
+          "Thomas, Noel": "Continuing",
+          "Welby, Thomas": "Eliminated"
+        }
+      },
+      {
+        "count": 11,
+        "values": {
+          "Bairéad, Néill": 0,
+          "Cahill, AJ": 0,
+          "Cubbard, Mike": 0,
+          "Feeney, Patrick": 0,
+          "Garrity, Sheila": 0,
+          "Keane, Cillian": 0,
+          "Kyne, Seán": 19218,
+          "Lohan, Mark": 0,
+          "Murphy, Niall": 0,
+          "Nic Fhionnlaoich, Míde": 0,
+          "Nugent, Orla": 0,
+          "O'Leary, John": 0,
+          "Ogbu, Helen": 0,
+          "Rooke, Denman": 0,
+          "Ryan, Michael": 0,
+          "Thomas, Noel": 16519,
+          "Welby, Thomas": 0
+        },
+        "transfers": {
+          "Bairéad, Néill": 0,
+          "Cahill, AJ": 0,
+          "Cubbard, Mike": 0,
+          "Feeney, Patrick": 0,
+          "Garrity, Sheila": 0,
+          "Keane, Cillian": 0,
+          "Kyne, Seán": 4249,
+          "Lohan, Mark": 0,
+          "Murphy, Niall": 0,
+          "Nic Fhionnlaoich, Míde": 0,
+          "Nugent, Orla": 0,
+          "O'Leary, John": 0,
+          "Ogbu, Helen": -12960,
+          "Rooke, Denman": 0,
+          "Ryan, Michael": 0,
+          "Thomas, Noel": 1273,
+          "Welby, Thomas": 0
+        },
+        "status": {
+          "Bairéad, Néill": "Eliminated",
+          "Cahill, AJ": "Eliminated",
+          "Cubbard, Mike": "Eliminated",
+          "Feeney, Patrick": "Eliminated",
+          "Garrity, Sheila": "Eliminated",
+          "Keane, Cillian": "Eliminated",
+          "Kyne, Seán": "Elected",
+          "Lohan, Mark": "Eliminated",
+          "Murphy, Niall": "Eliminated",
+          "Nic Fhionnlaoich, Míde": "Eliminated",
+          "Nugent, Orla": "Eliminated",
+          "O'Leary, John": "Eliminated",
+          "Ogbu, Helen": "Eliminated",
+          "Rooke, Denman": "Eliminated",
+          "Ryan, Michael": "Eliminated",
+          "Thomas, Noel": "Continuing",
+          "Welby, Thomas": "Eliminated"
         }
       }
     ]

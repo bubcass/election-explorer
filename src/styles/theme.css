@@ -691,6 +691,55 @@
     display: none;
 }
 
+.election-contest-context {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-top: 0.65rem;
+    color: var(--text-soft);
+    font-size: 0.84rem;
+    line-height: 1.3;
+}
+
+.election-contest-context label {
+    flex: 0 0 auto;
+}
+
+.election-contest-context select {
+    appearance: none;
+    -webkit-appearance: none;
+    min-width: 0;
+    max-width: 100%;
+    border: 0;
+    border-bottom: 1px solid currentColor;
+    border-radius: 0;
+    padding: 0.2rem 1.25rem 0.2rem 0;
+    background-color: transparent;
+    color: var(--gold);
+    font: inherit;
+    font-weight: 600;
+    line-height: 1.3;
+    cursor: pointer;
+    background-image:
+        linear-gradient(45deg, transparent 50%, currentColor 50%),
+        linear-gradient(135deg, currentColor 50%, transparent 50%);
+    background-position:
+        calc(100% - 6px) calc(50% - 2px),
+        100% calc(50% - 2px);
+    background-size: 6px 6px, 6px 6px;
+    background-repeat: no-repeat;
+}
+
+.election-contest-context select:hover,
+.election-contest-context select:focus-visible {
+    color: var(--text);
+}
+
+.election-contest-context select:focus-visible {
+    outline: 2px solid var(--focus-ring);
+    outline-offset: 3px;
+}
+
 .election-panel-select .control-input,
 .election-constituency-select .control-input,
 .election-candidate-select .control-input,

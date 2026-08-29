@@ -7,12 +7,12 @@ const __dirname = path.dirname(__filename);
 
 const INPUT_PATH = path.resolve(
   __dirname,
-  "../derived/election-2024-normalised.json",
+  "../derived/election-results-normalised.json",
 );
 
 const OUTPUT_PATH = path.resolve(
   __dirname,
-  "../derived/election-2024-final-rows.json",
+  "../derived/election-results-final-rows.json",
 );
 
 function compareRows(a, b) {
@@ -42,7 +42,7 @@ async function main() {
   const byConstituencyAndCandidate = new Map();
 
   for (const row of rows) {
-    const key = `${row.constituency}|||${row.name}`;
+    const key = `${row.election}|||${row.constituency}|||${row.name}`;
     const existing = byConstituencyAndCandidate.get(key);
 
     if (!existing || compareRows(existing, row) < 0) {
@@ -56,7 +56,7 @@ async function main() {
 
   const output = {
     generatedAt: new Date().toISOString(),
-    sourceFile: "election-2024-normalised.json",
+    sourceFile: "election-results-normalised.json",
     rowCount: finalRows.length,
     fields: payload?.fields ?? [],
     data: finalRows,

@@ -4,6 +4,7 @@ export function electionTimelineControls({
   },
   resultsPromise = Promise.resolve([]),
   getConstituency = () => null,
+  getElection = () => null,
   onChange = () => {},
 } = {}) {
   const container = document.createElement("div");
@@ -21,7 +22,10 @@ export function electionTimelineControls({
 
   function getRowsForSelectedConstituency() {
     const constituency = getConstituency();
-    return rowsCache.filter((d) => d.constituency === constituency);
+    const election = getElection();
+    return rowsCache.filter(
+      (d) => d.election === election && d.constituency === constituency,
+    );
   }
 
   function getAvailableCounts() {

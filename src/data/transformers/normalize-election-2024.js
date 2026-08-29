@@ -6,10 +6,10 @@ import * as d3 from "d3";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const INPUT_PATH = path.resolve(__dirname, "../election_2024_cleaned.csv");
+const INPUT_PATH = path.resolve(__dirname, "../election_results.csv");
 const OUTPUT_PATH = path.resolve(
   __dirname,
-  "../derived/election-2024-normalised.json",
+  "../derived/election-results-normalised.json",
 );
 
 function cleanString(value) {
@@ -59,6 +59,7 @@ function normaliseGender(value) {
 
 function sortRows(a, b) {
   return (
+    d3.ascending(a.electionDate, b.electionDate) ||
     d3.ascending(a.constituency, b.constituency) ||
     d3.ascending(a.count, b.count) ||
     d3.ascending(a.name, b.name)
@@ -75,8 +76,10 @@ async function main() {
 
     return {
       rowId: index + 1,
-      election: "2024",
-      electionLabel: "2024 general election",
+      election: cleanString(d.election) || "2024-general-election",
+      electionLabel: cleanString(d.election_label) || "2024 general election",
+      electionDate: cleanString(d.election_date) || "2024-11-29",
+      electionType: cleanString(d.election_type) || "general election",
       house: "Dáil Éireann",
       name: cleanString(d.candidate),
       gender: normaliseGender(d.gender),
@@ -97,12 +100,14 @@ async function main() {
 
   const output = {
     generatedAt: new Date().toISOString(),
-    sourceFile: "election_2024_cleaned.csv",
+    sourceFile: "election_results.csv",
     rowCount: cleanedRows.length,
     fields: [
       "rowId",
       "election",
       "electionLabel",
+      "electionDate",
+      "electionType",
       "house",
       "name",
       "gender",

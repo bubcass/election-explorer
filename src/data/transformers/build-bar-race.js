@@ -13,6 +13,9 @@ if (!inputPath || !outputPath) {
 const raw = fs.readFileSync(inputPath, "utf8");
 
 const rows = csvParse(raw, (d) => ({
+  election: d.election || "2024-general-election",
+  electionLabel: d.election_label || "2024 general election",
+  electionDate: d.election_date || "2024-11-29",
   name: d.candidate,
   gender: d.gender,
   party: d.party,
@@ -25,19 +28,24 @@ const rows = csvParse(raw, (d) => ({
   seats: Number(d.seats),
 }));
 
-const byConstituency = new Map();
+const byElectionAndConstituency = new Map();
 
 for (const row of rows) {
   if (!row.constituency) continue;
 
-  if (!byConstituency.has(row.constituency)) {
-    byConstituency.set(row.constituency, []);
+  const key = `${row.election}|||${row.constituency}`;
+  if (!byElectionAndConstituency.has(key)) {
+    byElectionAndConstituency.set(key, []);
   }
 
-  byConstituency.get(row.constituency).push(row);
+  byElectionAndConstituency.get(key).push(row);
 }
 
-const output = Array.from(byConstituency, ([constituency, records]) => {
+const output = Array.from(byElectionAndConstituency, ([, records]) => {
+  const election = records[0]?.election ?? "";
+  const electionLabel = records[0]?.electionLabel ?? "";
+  const electionDate = records[0]?.electionDate ?? "";
+  const constituency = records[0]?.constituency ?? "";
   const quota = records[0]?.quota ?? 0;
   const seats = records[0]?.seats ?? 0;
   const maxValue = Math.max(...records.map((d) => d.value));
@@ -79,6 +87,9 @@ const output = Array.from(byConstituency, ([constituency, records]) => {
   );
 
   return {
+    election,
+    electionLabel,
+    electionDate,
     constituency,
     quota,
     seats,
@@ -87,7 +98,10 @@ const output = Array.from(byConstituency, ([constituency, records]) => {
     candidates,
     counts,
   };
-}).sort((a, b) => a.constituency.localeCompare(b.constituency));
+}).sort((a, b) =>
+  a.electionDate.localeCompare(b.electionDate) ||
+  a.constituency.localeCompare(b.constituency)
+);
 
 fs.mkdirSync(path.dirname(outputPath), { recursive: true });
 fs.writeFileSync(outputPath, JSON.stringify(output, null, 2));
