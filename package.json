@@ -15,7 +15,8 @@
     "observable": "observable",
     "security:audit": "npm audit --audit-level=critical",
     "security:runtime": "npm audit --omit=dev --audit-level=high",
-    "verify": "npm run build && npm run security:runtime"
+    "test": "node --test",
+    "verify": "npm test && npm run build && npm run security:runtime"
   },
   "devDependencies": {
     "@observablehq/framework": "1.13.4",

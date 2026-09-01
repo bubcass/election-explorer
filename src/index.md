@@ -15,6 +15,10 @@ import { electionBarRace } from "./components/electionBarRace.js";
 import { renderElectionSectionNav } from "./components/election-section-nav.js";
 import { enhanceHeroWithShare } from "./components/hero-share.js";
 import { detectConstituencyFromLocation } from "./components/constituency-location.js";
+import {
+  resolveElectionUrlState,
+  updateElectionUrl
+} from "./components/election-url-state.js";
 
 const format = d3.format(",d");
 const heroVideoPromise = FileAttachment("media/election.mp4").url();
@@ -67,15 +71,45 @@ if (typeof window !== "undefined" && !window.__electionsResizeObserver) {
   window.__electionsResizeObserver.observe(document.body);
 }
 
+const defaultElectionsState = {
+  election: "2024-general-election",
+  constituency: "Carlow-Kilkenny",
+  count: null,
+  colorMode: "party",
+  tableSort: "status",
+  candidateFocus: null
+};
+
+const initialElectionRows = (await normalisedPromise).data ?? [];
+
 if (!window.electionsState) {
   window.electionsState = {
-    election: "2024-general-election",
-    constituency: "Carlow-Kilkenny",
-    count: null,
-    colorMode: "party",
-    tableSort: "status",
-    candidateFocus: null
+    ...defaultElectionsState,
+    ...resolveElectionUrlState({
+      rows: initialElectionRows,
+      search: window.location.search,
+      defaults: defaultElectionsState
+    })
   };
+  updateElectionUrl(window.electionsState);
+}
+
+if (!window.__electionsUrlStateListener) {
+  window.__electionsUrlStateListener = true;
+  window.addEventListener("popstate", () => {
+    Object.assign(
+      window.electionsState,
+      resolveElectionUrlState({
+        rows: initialElectionRows,
+        search: window.location.search,
+        defaults: defaultElectionsState
+      }),
+      { count: null, candidateFocus: null }
+    );
+    window.dispatchEvent(new CustomEvent("elections:change", {
+      detail: { source: "url" }
+    }));
+  });
 }
 
 function getState() {
@@ -671,6 +705,7 @@ function renderConstituencySelect(options, selectedValue) {
     }
     window.electionsState.count = null;
     window.electionsState.candidateFocus = null;
+    updateElectionUrl(window.electionsState, { mode: "push" });
     window.dispatchEvent(new CustomEvent("elections:change"));
   }
 
@@ -725,6 +760,7 @@ function renderContestSelect(options, selectedValue) {
     window.electionsState.election = event.target.value;
     window.electionsState.count = null;
     window.electionsState.candidateFocus = null;
+    updateElectionUrl(window.electionsState, { mode: "push" });
     window.dispatchEvent(new CustomEvent("elections:change"));
   });
 
