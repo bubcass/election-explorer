@@ -92,10 +92,6 @@
     stroke-width: 1.8;
 }
 
-.election-bar-race__replay[aria-busy="true"] .election-bar-race__replay-icon {
-    animation: election-bar-race-replay-spin 1s linear infinite;
-}
-
 .election-bar-race__title {
     display: grid;
     gap: 0.12rem;
@@ -119,18 +115,6 @@
 
 .election-bar-race svg {
     overflow: visible;
-}
-
-@keyframes election-bar-race-replay-spin {
-    to {
-        transform: rotate(360deg);
-    }
-}
-
-@media (prefers-reduced-motion: reduce) {
-    .election-bar-race__replay-icon {
-        animation: none !important;
-    }
 }
 
 /* Legend */

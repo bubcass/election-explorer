@@ -155,7 +155,7 @@ export function electionBarRace({
       <path d="M20 11a8 8 0 1 0-2.34 5.66" />
       <path d="M20 4v7h-7" />
     </svg>
-    <span>Restart animation</span>
+            <span>Restart</span>
   `;
 
   const svg = d3
