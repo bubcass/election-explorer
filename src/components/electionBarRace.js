@@ -155,6 +155,21 @@ export function electionBarRace({
   const wrapper = document.createElement("div");
   wrapper.className = "election-bar-race";
 
+  const stage = document.createElement("div");
+  stage.className = "election-bar-race__stage";
+
+  const replayButton = document.createElement("button");
+  replayButton.type = "button";
+  replayButton.className = "election-bar-race__replay";
+  replayButton.setAttribute("aria-busy", "true");
+  replayButton.innerHTML = `
+    <svg class="election-bar-race__replay-icon" viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M20 11a8 8 0 1 0-2.34 5.66" />
+      <path d="M20 4v7h-7" />
+    </svg>
+    <span>Restart animation</span>
+  `;
+
   const svg = d3
     .create("svg")
     .attr("viewBox", [0, 0, width, height])
@@ -370,33 +385,66 @@ export function electionBarRace({
       .catch(() => {});
   }
 
-  wrapper.appendChild(svg.node());
+  stage.append(svg.node(), replayButton);
+  wrapper.appendChild(stage);
 
   let stopped = false;
+  let runId = 0;
+  const frameDuration = window.matchMedia("(prefers-reduced-motion: reduce)").matches
+    ? 0
+    : duration;
 
-  async function run() {
-    for (const keyframe of keyframes) {
-      if (stopped) break;
-
-      const transition = svg
-        .transition()
-        .duration(duration)
-        .ease(d3.easeLinear);
-
-      updateAxis(transition);
-      updateBars(keyframe, transition);
-      updateLabels(keyframe, transition);
-      updateTicker(keyframe, transition);
-
-      await transition.end().catch(() => {});
-    }
+  function setPlaying(isPlaying) {
+    if (isPlaying) replayButton.setAttribute("aria-busy", "true");
+    else replayButton.removeAttribute("aria-busy");
   }
 
+  function interruptRace() {
+    svg.interrupt();
+    svg.selectAll("*").interrupt();
+  }
+
+  async function applyFrame(keyframe, transitionDuration) {
+    const transition = svg
+      .transition()
+      .duration(transitionDuration)
+      .ease(d3.easeLinear);
+
+    updateAxis(transition);
+    updateBars(keyframe, transition);
+    updateLabels(keyframe, transition);
+    updateTicker(keyframe, transition);
+
+    await transition.end().catch(() => {});
+  }
+
+  async function run({ reset = false } = {}) {
+    const currentRun = ++runId;
+    setPlaying(true);
+    interruptRace();
+
+    if (reset) {
+      await applyFrame(keyframes[0], 0);
+      if (stopped || currentRun !== runId) return;
+    }
+
+    for (const keyframe of keyframes) {
+      if (stopped || currentRun !== runId) return;
+      await applyFrame(keyframe, frameDuration);
+    }
+
+    if (!stopped && currentRun === runId) setPlaying(false);
+  }
+
+  const replay = () => run({ reset: true });
+  replayButton.addEventListener("click", replay);
   run();
 
   wrapper.destroy = () => {
     stopped = true;
-    svg.interrupt();
+    runId += 1;
+    interruptRace();
+    replayButton.removeEventListener("click", replay);
   };
 
   return wrapper;

@@ -1057,6 +1057,7 @@ display(
       duration: 180
     });
 
+    el.querySelector(".election-bar-race")?.destroy?.();
     el.replaceChildren(chart);
   }, { debounceMs: 80, skeletonDelay: 120 })
 );
