@@ -67,7 +67,8 @@ export default {
           logo.width = 163;
           logo.height = 69;
           logo.src = document.querySelector('link[rel="preload"][as="image"]')?.href || "oireachtas-logo.svg";
-          const houseSrc = document.querySelector('link[data-insights-house]')?.href || "insights-house.svg";
+          const houseSrc = new URL(document.querySelector('link[data-insights-house]')?.href || "insights-house.svg", window.location.href);
+          houseSrc.searchParams.set("canonical", "2");
           homeLink.appendChild(logo);
 
           const resourceLink = document.createElement("a");
